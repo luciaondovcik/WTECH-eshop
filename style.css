@@ -1,7 +1,12 @@
+@font-face {
+  font-family: mohave;
+  src: url(font/Mohave-Regular.otf);
+}
+
 html,body {
 	margin:0 auto;
 	padding:0;
-	font-family: sans-serif;
+	font-family: mohave, sans-serif;
 }
 
 /*header*/
@@ -16,6 +21,7 @@ form .form-control{
 
 /*Navbar*/
 .navbar li{
+	font-size: 1.2em;
 	margin: 0 1em;
 }
 
