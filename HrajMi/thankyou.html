@@ -23,55 +23,95 @@
   
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
-      <div class="site-navbar-top">
-        <div class="container">
+      <div class="site-navbar-top py-3">
+        <div class="container-fluid">
           <div class="row align-items-center">
 
-            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search">
-                <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
-              </form>
+            <div class="col-12 col-xl-5">
+              
             </div>
 
-            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+            <div class="col-12 mb-3 mb-xl-0 col-xl-2 order-1 order-xl-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">HrajMi</a>
+                <a href="index.html" class="js-logo-clone">HrajMi.sk</a>
               </div>
             </div>
+			
 
-            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-              <div class="site-top-icons">
-                <ul>
-					<li class="has-children"><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li>
-                    <a href="cart.html" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="count">2</span>
-                    </a>
-                  </li> 
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                </ul>
-              </div> 
+            <div class="col-12 col-xl-5 order-3 order-xl-3 text-right my-header">
+				<div class="site-search-icon text-left">
+				  <form action="" class="site-block-top-search">
+					<span class="icon icon-search2"></span>
+					<input type="text" class="form-control border-0" placeholder="Chcem si kúpiť...">
+				  </form>
+				</div>
+				<div class="site-top-icons mt-4 mt-xl-0 my-icons">
+					<ul>
+						<li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+					</ul>
+					<ul class="p-1 ml-xl-2">
+						<li data-toggle="modal" data-target="#exampleModal">Neprihlásený <span class="icon icon-person"></span></li>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content modal-fullscreen">
+							  <div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Prihlásenie</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+								</button>
+							  </div>
+							  <div class="modal-body m-3">
+								<form>
+								  <div class="form-group border-bottom">
+									<input type="email" class="form-control border-0" id="email-usr" aria-describedby="emailHelp" placeholder="Enter email">
+								  </div>
+								  <div class="form-group border-bottom">
+									<input type="password" class="form-control border-0" id="password-usr" placeholder="Password">
+								  </div>
+								  
+								  <div class="d-flex justify-content-center m-3 mt-5">
+									<button type="submit" class="btn btn-primary">Prihlásiť</button>
+								  </div>
+								  <div class="d-flex justify-content-center m-3 mt-4">
+									<button type="button" class="btn btn-primary registration border-0">Registrácia</button>
+								  </div>
+								</form>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  <li>
+						<a href="cart.html" class="site-cart ml-2">
+						  <span class="icon icon-shopping_cart"></span>
+						  <span class="count">2</span>
+						</a>
+					  </li> 
+					  
+					</ul>
+				</div> 
             </div>
 
           </div>
         </div>
       </div> 
-      <nav class="site-navigation text-right text-md-center" role="navigation">
-        <div class="container">
-          <ul class="site-menu js-clone-nav d-none d-md-block p-0">
-            <li><a href="shop.html">Gitary</a></li>
-            <li><a href="shop.html">Basgitary</a></li>
-			<li><a href="shop.html">Klávesy</a></li>
-            <li><a href="shop.html">Bicie</a></li>
-            <li><a href="shop.html">Dychy</a></li>
-            <li><a href="shop.html">Sláčiky</a></li>
-            <li><a href="shop.html">Tradičné</a></li>
-			<li><a href="shop.html">Zľavy</a></li>
-          </ul>
-        </div>
-      </nav>
+	  <div class="col-12 text-left">
+		  <nav class="site-navigation text-right text-md-center" role="navigation">
+			<div class="container">
+			  <ul class="site-menu js-clone-nav d-none d-md-block p-0">
+				<li class="active"><a href="index.html">Gitary</a></li>
+				<li><a href="about.html">Basgitary</a></li>
+				<li><a href="shop.html">Klávesy</a></li>
+				<li><a href="shop.html">Bicie</a></li>
+				<li><a href="#">Dychy</a></li>
+				<li><a href="#">Sláčiky</a></li>
+				<li><a href="contact.html">Tradičné</a></li>
+				<li><a href="contact.html">Zľavy</a></li>
+			  </ul>
+			</div>
+		  </nav>
+	  </div>
     </header>
 
     <div class="bg-light py-3">
@@ -106,9 +146,14 @@
 								<div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">HrajMi</div>
 								<div class="collapse text-white d-lg-flex" id="one" data-parent="#accordion" >
 									<ul class="list-unstyled">
-										<li><a href="contact.html" class="nav-link">Kontaktujte nás</a></li>
+										<li><a href="#" class="nav-link">Kontaktujte nás</a></li>
 										<li><a href="#" class="nav-link">Predajne</a></li>
 										<li><a href="#" class="nav-link">9:00 - 20:00</a></li>
+										<li class="d-flex"><a href="#" class="nav-link"><span class="icon icon-facebook mr-lg-3"></span></a>
+											<a href="#" class="nav-link"><span class="icon icon-instagram mr-lg-3"></span></a>
+											<a href="#" class="nav-link"><span class="icon icon-twitter mr-lg-3"></span></a>
+											<a href="#" class="nav-link"><span class="icon icon-youtube mr-lg-3"></span></a>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -117,7 +162,7 @@
 								<div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">O spoločnosti</div>
 								<div class="collapse text-white d-lg-flex" id="two" data-parent="#accordion" >
 									<ul class="list-unstyled">
-										<li><a href="about.html" class="nav-link">O nás</a></li>
+										<li><a href="#" class="nav-link">O nás</a></li>
 										<li><a href="#" class="nav-link">Kariéra</a></li>
 										<li><a href="#" class="nav-link">Pre médiá</a></li>
 									</ul>
