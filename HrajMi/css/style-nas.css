@@ -3,34 +3,27 @@ html,body {
 	padding:0;
 }
 
-/*nav*/
-.site-navbar .site-top-icons ul li a.site-cart .count {
-	background: #2a9d8f;
-}
-
-.site-navbar .site-navigation .site-menu .active > a {
-    color: #2a9d8f; 
-}
-.site-navbar .site-navigation .site-menu > li > a:hover {
-    color: #2a9d8f; 
-}
-.site-navbar .site-navigation .site-menu .has-children .dropdown .active > a {
-    color: #2a9d8f !important; 
-}
-.site-navbar .site-navigation .site-menu .has-children:hover > a, .site-navbar .site-navigation .site-menu .has-children:focus > a, .site-navbar .site-navigation .site-menu .has-children:active > a {
-	color: #2a9d8f; 
-}
-.site-mobile-menu .site-nav-wrap a:hover {
-    color: #2a9d8f; 
-}
-.site-mobile-menu .site-nav-wrap li.active > a {
-    color: #2a9d8f; 
-}
-
 /*header*/
 .site-block-top-search { 
 	border-bottom: 0.1rem solid;
 	border-bottom-color: #ced4da; 
+}
+.site-navbar .icon{
+	font-size:22px;
+}
+.site-navbar .site-logo a{
+	text-transform:none;
+	font-weight: 500;
+	font-size: 30px;
+	border: none;
+}
+
+.js-menu-toggle{
+	text-align:left;
+}
+.registration {
+	background-color:#fff;
+	color: #000;
 }
 
 /*footer*/
@@ -64,9 +57,29 @@ html,body {
 	}
 }
 
+@media (min-width: 1200px){
+	.my-header{
+		display:flex;
+		justify-content: flex-end;
+	}
+}
+
+
 @media (max-width: 768px){
 	.site-section-heading{
 		margin-top: 5rem;
 	}
+	.my-icons{
+		display:flex;
+		justify-content: space-between;
+	}
 
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+	.my-header{
+		display:flex;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
 }
