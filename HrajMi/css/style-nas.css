@@ -3,20 +3,57 @@ html,body {
 	padding:0;
 }
 
+/*nav*/
+.site-navbar .site-top-icons ul li a.site-cart .count {
+	background: #2a9d8f;
+}
+
+.site-navbar .site-navigation .site-menu .active > a {
+    color: #2a9d8f; 
+}
+.site-navbar .site-navigation .site-menu > li > a:hover {
+    color: #2a9d8f; 
+}
+.site-navbar .site-navigation .site-menu .has-children .dropdown .active > a {
+    color: #2a9d8f !important; 
+}
+.site-navbar .site-navigation .site-menu .has-children:hover > a, .site-navbar .site-navigation .site-menu .has-children:focus > a, .site-navbar .site-navigation .site-menu .has-children:active > a {
+	color: #2a9d8f; 
+}
+.site-mobile-menu .site-nav-wrap a:hover {
+    color: #2a9d8f; 
+}
+.site-mobile-menu .site-nav-wrap li.active > a {
+    color: #2a9d8f; 
+}
+
+/*header*/
 .site-block-top-search { 
-	border-bottom: 0.1em solid;
+	border-bottom: 0.1rem solid;
 	border-bottom-color: #ced4da; 
 }
 
-@media only screen and (min-width: 750px) {
-	.site-footer .my-footer{
-		padding: 1em;
-	}
+/*footer*/
+.site-footer {
+	padding-bottom:0;
+	padding-top: 1rem;
 }
 
-@media only screen and (min-width: 1100px) {
+.site-footer ul li{
+	margin-bottom:0;
+}
+
+
+@media only screen and (min-width: 992px) {
+	.site-footer {
+		padding-top:0;
+	}
 	.site-footer .my-footer{
-		padding: 3em;
+		padding: 2rem 3rem;
+	}
+	
+	.site-footer ul li a{
+	padding: 0.5rem 0;
 	}
 }
 @media (min-width: 768px){
