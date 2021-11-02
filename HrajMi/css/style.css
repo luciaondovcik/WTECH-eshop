@@ -96,7 +96,7 @@ a {
   font-size: 30px;
   color: #25262a;
   position: relative; }
-  .site-section-heading:before {
+  /*.site-section-heading:before {
     content: "";
     left: 0%;
     top: 0;
@@ -114,7 +114,7 @@ a {
     position: absolute;
     width: 40px;
     height: 2px;
-    background: #7971ea; }
+    background: #7971ea; }*/
 
 .border-top {
   border-top: 1px solid #edf0f5 !important; }
