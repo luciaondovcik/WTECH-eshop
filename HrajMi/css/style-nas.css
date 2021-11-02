@@ -19,3 +19,8 @@ html,body {
 		padding: 3em;
 	}
 }
+@media (min-width: 768px){
+	.splitscreen .col-md-6 {
+		max-width: 100%;
+	}
+}
