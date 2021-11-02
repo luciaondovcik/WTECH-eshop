@@ -37,15 +37,14 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
+                <a href="index.html" class="js-logo-clone">HrajMi</a>
               </div>
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+					<li class="has-children"><a href="#"><span class="icon icon-person"></span></a></li>
                   <li>
                     <a href="cart.html" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
@@ -62,35 +61,15 @@
       </div> 
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
-          <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children">
-              <a href="index.html">Home</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Sub Menu</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="has-children active">
-              <a href="about.html">About</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-              </ul>
-            </li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="contact.html">Contact</a></li>
+          <ul class="site-menu js-clone-nav d-none d-md-block p-0">
+            <li><a href="shop.html">Gitary</a></li>
+            <li><a href="shop.html">Basgitary</a></li>
+			<li><a href="shop.html">Klávesy</a></li>
+            <li><a href="shop.html">Bicie</a></li>
+            <li><a href="shop.html">Dychy</a></li>
+            <li><a href="shop.html">Sláčiky</a></li>
+            <li><a href="shop.html">Tradičné</a></li>
+			<li><a href="shop.html">Zľavy</a></li>
           </ul>
         </div>
       </nav>
@@ -237,67 +216,64 @@
 
     
     <footer class="site-footer border-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="container-fluid">
             <div class="row">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Navigations</h3>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Sell online</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Shopping cart</a></li>
-                  <li><a href="#">Store builder</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Mobile commerce</a></li>
-                  <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">Website development</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Point of sale</a></li>
-                  <li><a href="#">Hardware</a></li>
-                  <li><a href="#">Software</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">Promo</h3>
-            <a href="#" class="block-6">
-              <img src="images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">Finding Your Perfect Shoes</h3>
-              <p>Promo from  nuary 15 &mdash; 25, 2019</p>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
-              <ul class="list-unstyled">
-                <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">emailaddress@domain.com</li>
-              </ul>
-            </div>
-
-            <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
-                <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-primary" value="Send">
-                </div>
-              </form>
-            </div>
-          </div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="accordion w-100 d-lg-flex" id="accordion">
+							<div class="col-lg-3 col-md-12 my-footer">
+								<a href="#one" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >HrajMi</a>
+								<div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">HrajMi</div>
+								<div class="collapse text-white d-lg-flex" id="one" data-parent="#accordion" >
+									<ul class="list-unstyled">
+										<li><a href="contact.html" class="nav-link">Kontaktujte nás</a></li>
+										<li><a href="#" class="nav-link">Predajne</a></li>
+										<li><a href="#" class="nav-link">9:00 - 20:00</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-12 my-footer">
+								<a href="#two" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >O spoločnosti</a>
+								<div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">O spoločnosti</div>
+								<div class="collapse text-white d-lg-flex" id="two" data-parent="#accordion" >
+									<ul class="list-unstyled">
+										<li><a href="about.html" class="nav-link">O nás</a></li>
+										<li><a href="#" class="nav-link">Kariéra</a></li>
+										<li><a href="#" class="nav-link">Pre médiá</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-12 my-footer">
+								<a href="#three" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >FAQ</a>
+								<div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">FAQ</div>
+								<div class="collapse text-white d-lg-flex" id="three" data-parent="#accordion" >
+									<ul class="list-unstyled">
+										<li><a href="#" class="nav-link">Otázka 1</a></li>
+										<li><a href="#" class="nav-link">Otázka 2</a></li>
+										<li><a href="#" class="nav-link">Otázka 3</a></li>
+										<li><a href="#" class="nav-link">Načítaj ďalšie</a></li>									
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-12 my-footer">
+								<a href="#four" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >O nákupe</a>
+								<div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">O nákupe</div>
+								<div class="collapse text-white d-lg-flex" id="four" data-parent="#accordion" >
+									<ul class="list-unstyled">
+										<li><a href="#" class="nav-link">Doprava</a></li>
+										<li><a href="#" class="nav-link">Reklamácia</a></li>
+										<li><a href="#" class="nav-link">Tabuľka veľkostí</a></li>
+										<li><a href="#" class="nav-link">Obchodné podmienky</a></li>
+									</ul>
+								</div>
+							</div>
+                  
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
-        <div class="row pt-5 mt-5 text-center">
+		<div class="row text-center border-top pt-2">
           <div class="col-md-12">
             <p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -307,7 +283,6 @@
           </div>
           
         </div>
-      </div>
     </footer>
   </div>
 
