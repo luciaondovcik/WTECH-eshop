@@ -40,11 +40,6 @@ html,body {
 	text-align: center;
 }
 
-
-#inliner {
-	display: inline-block;
-}
-
 /* Centered text */
 .photo-centered {
 	position: absolute;
