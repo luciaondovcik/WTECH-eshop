@@ -40,6 +40,19 @@ html,body {
 	text-align: center;
 }
 
+
+#inliner {
+	display: inline-block;
+}
+
+/* Centered text */
+.photo-centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 @media only screen and (min-width: 992px) {
 	.site-footer {
 		padding-top:0;
