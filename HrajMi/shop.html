@@ -50,7 +50,7 @@
 					<ul>
 						<li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
 					</ul>
-					<ul class="p-1 ml-xl-2">
+					<ul class="user-btn p-1 ml-xl-2">
 						<li data-toggle="modal" data-target="#exampleModal">Neprihlásený <span class="icon icon-person"></span></li>
 
 						<!-- Modal -->
@@ -76,7 +76,7 @@
 									<button type="submit" class="btn btn-primary">Prihlásiť</button>
 								  </div>
 								  <div class="d-flex justify-content-center m-3 mt-4">
-									<button type="button" class="btn btn-primary registration border-0">Registrácia</button>
+									<button type="button" class="btn btn-primary registration border-0" onclick="window.location.href='registration.html';">Registrácia</button>
 								  </div>
 								</form>
 							  </div>
@@ -101,7 +101,7 @@
 		  <nav class="site-navigation text-right text-md-center" role="navigation">
 			<div class="container">
 			  <ul class="site-menu js-clone-nav d-none d-md-block p-0">
-				<li class="active"><a href="index.html">Gitary</a></li>
+				<li><a href="shop.html">Gitary</a></li>
 				<li><a href="shop.html">Basgitary</a></li>
 				<li><a href="shop.html">Klávesy</a></li>
 				<li><a href="shop.html">Bicie</a></li>
@@ -118,39 +118,33 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">HrajMi.sk</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Gitary</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.html">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Gitary</strong></div>
         </div>
       </div>
     </div>
 
     <div class="site-section">
-        <div class="row">
-            <div class="col-md-12 mb-0">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Gitary</h2></div>
-                12 z 68
-                <div class="d-flex">
-                    <div class="dropdown mr-1 ml-md-auto">
-                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Obľúbené
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                            <a class="dropdown-item" href="#">Názov - A až Z</a>
-                            <a class="dropdown-item" href="#">Názov - Z až A</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Cena - vzostupne</a>
-                            <a class="dropdown-item" href="#">Cena - zostupne</a>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+		<div class="row border-bottom border-top mb-4">
+            <div class="col-md-12 d-flex justify-content-between my-2">
+				<p class="my-auto">1-12 z 68</p>
+				<div class="dropdown mr-1 ml-md-auto d-flex justify-content-end">
+					<p class=" my-auto mr-2">Zoradiť podľa:</p>
+					<button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Obľúbené
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+						<a class="dropdown-item" href="#">Názov - A až Z</a>
+						<a class="dropdown-item" href="#">Názov - Z až A</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Cena - vzostupne</a>
+						<a class="dropdown-item" href="#">Cena - zostupne</a>
+					</div>
+				</div>
             </div>
         </div>
-      <div class="container">
-
         <div class="row mb-5">
           <div class="col-md-9 order-2">
-
-
-
             <div class="row mb-5">
 
               <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
