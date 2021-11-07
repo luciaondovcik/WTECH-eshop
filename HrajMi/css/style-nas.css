@@ -8,6 +8,10 @@ nav {
 	border-bottom: 1px solid #f3f3f4;
 }
 
+.btn-search{
+	color:#8c92a0;
+}
+
 .site-block-top-search { 
 	border-bottom: 0.1rem solid;
 	border-bottom-color: #ced4da; 
@@ -45,6 +49,16 @@ nav {
 }
 .single-product-carousel li{
 	width: 100%;
+}
+
+/*cart*/
+.cart-item a{
+	color: #8c92a0;
+}
+
+.cart-item a:hover{
+	color: #7971ea;
+	text-decoration: underline;
 }
 
 /*footer*/
