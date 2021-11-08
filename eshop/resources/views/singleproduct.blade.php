@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HrajMi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-nas.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="site-wrap">
+    <header class="site-navbar" role="banner">
+        <div class="site-navbar-top py-3">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+
+                    <div class="col-12 col-xl-5">
+
+                    </div>
+
+                    <div class="col-12 mb-3 mb-xl-0 col-xl-2 order-1 order-xl-2 text-center">
+                        <div class="site-logo">
+                            <a href="index.html" class="js-logo-clone">HrajMi.sk</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-xl-5 order-3 order-xl-3 text-right my-header">
+                        <div class="site-search-icon text-left">
+                            <form action="" class="site-block-top-search d-flex align-items-center">
+                                <button type="button" class="btn btn-link pt-2 btn-search"><span class="icon icon-search2"></span></button>
+                                <input type="text" class="form-control border-0" placeholder="Chcem si kúpiť...">
+                            </form>
+                        </div>
+                        <div class="site-top-icons mt-4 mt-xl-0 my-icons">
+                            <ul>
+                                <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                            </ul>
+                            <ul class="user-btn p-1 ml-xl-2">
+                                <li data-toggle="modal" data-target="#exampleModal">Neprihlásený <span class="icon icon-person"></span></li>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content modal-fullscreen">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Prihlásenie</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body m-3">
+                                                <form>
+                                                    <div class="form-group border-bottom">
+                                                        <input type="email" class="form-control border-0" id="email-usr" aria-describedby="emailHelp" placeholder="Enter email">
+                                                    </div>
+                                                    <div class="form-group border-bottom">
+                                                        <input type="password" class="form-control border-0" id="password-usr" placeholder="Password">
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-center m-3 mt-5">
+                                                        <button type="submit" class="btn btn-primary">Prihlásiť</button>
+                                                    </div>
+                                                    <div class="d-flex justify-content-center m-3 mt-4">
+                                                        <button type="button" class="btn btn-primary registration border-0" onclick="window.location.href='registration.html';">Registrácia</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <li>
+                                    <a href="cart.html" class="site-cart ml-2">
+                                        <span class="icon icon-shopping_cart"></span>
+                                        <span class="count">2</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-left">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+                <div class="container">
+                    <ul class="site-menu js-clone-nav d-none d-md-block p-0">
+                        <li><a href="shop.html">Gitary</a></li>
+                        <li><a href="shop.html">Basgitary</a></li>
+                        <li><a href="shop.html">Klávesy</a></li>
+                        <li><a href="shop.html">Bicie</a></li>
+                        <li><a href="shop.html">Dychy</a></li>
+                        <li><a href="shop.html">Sláčiky</a></li>
+                        <li><a href="shop.html">Tradičné</a></li>
+                        <li><a href="shop.html">Zľavy</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0"><a href="index.html">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Pasadena SG026C-38 Vintage Sunburst</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="images/guitar1.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/guitar2.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/guitar3.jpg" class="d-block w-100">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/guitar4.jpg" class="d-block w-100">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <ol class="carousel-indicators single-product-carousel mt-3">
+                            <li data-target="#carouselIndicators" data-slide-to="0" class="active">
+                                <img src="images/guitar1.jpg" class="d-block w-100">
+                            </li>
+                            <li data-target="#carouselIndicators" data-slide-to="1">
+                                <img src="images/guitar2.jpg" class="d-block w-100">
+                            </li>
+                            <li data-target="#carouselIndicators" data-slide-to="2">
+                                <img src="images/guitar3.jpg" class="d-block w-100">
+                            </li>
+                            <li data-target="#carouselIndicators" data-slide-to="3">
+                                <img src="images/guitar4.jpg" class="d-block w-100">
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2 class="text-black mt-5 mt-md-0">Pasadena SG026C-38 Vintage Sunburst</h2>
+                        <p>Samotná gitara teda prešla svojským vývojom. Pôvod gitary je zaznamenaný v Prednej Ázii, kde prvý hudobný nástroj podobný gitare tzv. kinor bol pozorovaný u Sumerov. Gitara sa dá zhotoviť z hocičoho, otázka je, akú kvalitu dosiahneme.</p>
+                        <p class="mb-4">Gitary sa robia prevažne na báze dreva, ako to bolo odjakživa. Existujú však gitary na báze syntetických materiálov (uhlíkové vlákno so svojimi dobrými elastickými vlastnosťami – RainSong Graphite Guitars) alebo sa využíva kov – oceľ na stavbu tela gitary.</p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p><strong class="text-primary h4">Cena s DPH</strong></p>
+                            <p><strong class="text-primary h4">49.99 €</strong></p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p><strong class="text-primary h6">Cena bez DPH</strong></p>
+                            <p><strong class="text-primary h6">41.66 €</strong></p>
+                        </div>
+                        <div>
+                            <p class="text-success small">Skladom</p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p><strong class="text-primary h6" style="vertical-align: bottom">Počet kusov:</strong></p>
+                            <div class="mb-5">
+                                <div class="input-group mb-3" style="max-width: 300px;">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                    </div>
+                                    <div style="max-width: 75px;">
+                                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    </div>
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">Kúpiť</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-12 nav-link-wrap">
+                        <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link ftco-animate mr-lg-1 fadeInUp ftco-animated active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="false">Popis</a>
+
+                            <a class="nav-link ftco-animate mr-lg-1 fadeInUp ftco-animated" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Výrobca</a>
+
+                            <a class="nav-link ftco-animate fadeInUp ftco-animated" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="true">Recenzie</a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 tab-wrap">
+                        <div class="tab-content bg-light" id="v-pills-tabContent">
+
+                            <div class="tab-pane fade active show" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
+                                <div class="p-4">
+                                    <h3 class="mb-4">Popis produktu</h3>
+                                    <p>Samotná gitara teda prešla svojským vývojom. Pôvod gitary je zaznamenaný v Prednej Ázii, kde prvý hudobný nástroj podobný gitare tzv. kinor bol pozorovaný u Sumerov. Gitara sa dá zhotoviť z hocičoho, otázka je, akú kvalitu dosiahneme. Gitary sa robia prevažne na báze dreva, ako to bolo odjakživa. Existujú však gitary na báze syntetických materiálov (uhlíkové vlákno so svojimi dobrými elastickými vlastnosťami – RainSong Graphite Guitars) alebo sa využíva kov – oceľ na stavbu tela gitary (rezofonické gitary, napríklad Dobro, Lap–steel). Bola skonštruovaná dokonca aj gitara s mramorovým telom.</p>
+                                    <ul>
+                                        <li>13 pražcov</li>
+                                        <li>smrekové drevo s ebenovými doplnkami</li>
+                                        <li>struny z recyklovaných materiálov</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
+                                <div class="p-4">
+                                    <h3 class="mb-4">Informácie o výrobcovi</h3>
+                                    <p>Samotná gitara teda prešla svojským vývojom. Pôvod gitary je zaznamenaný v Prednej Ázii, kde prvý hudobný nástroj podobný gitare tzv. kinor bol pozorovaný u Sumerov. Gitara sa dá zhotoviť z hocičoho, otázka je, akú kvalitu dosiahneme. Gitary sa robia prevažne na báze dreva, ako to bolo odjakživa. Existujú však gitary na báze syntetických materiálov (uhlíkové vlákno so svojimi dobrými elastickými vlastnosťami – RainSong Graphite Guitars) alebo sa využíva kov – oceľ na stavbu tela gitary (rezofonické gitary, napríklad Dobro, Lap–steel). Bola skonštruovaná dokonca aj gitara s mramorovým telom.</p>
+                                    <ul>
+                                        <li>13 pražcov</li>
+                                        <li>smrekové drevo s ebenovými doplnkami</li>
+                                        <li>struny z recyklovaných materiálov</li>
+                                    </ul>							  </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
+                                <div class="row p-4">
+                                    <div class="col-md-7">
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star"></span>
+														<span class="fa fa-star"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+													<span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+														<span class="fa fa-star checked"></span>
+													</span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4">
+                                        <div class="rating-wrap">
+                                            <h3 class="mb-4">Hodnotenia</h3>
+                                            <p class="star">
+												<span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													(66%)
+												</span>
+                                                <span>6 Recenzií</span>
+                                            </p>
+                                            <p class="star">
+												<span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star"></span>
+													(11%)
+												</span>
+                                                <span>1 Recenzia</span>
+                                            </p>
+                                            <p class="star">
+												<span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+													(22%)
+												</span>
+                                                <span>2 Recenzie</span>
+                                            </p>
+                                            <p class="star">
+												<span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+													(0%)
+												</span>
+                                                <span>0 Recenzií</span>
+                                            </p>
+                                            <p class="star"">
+                                            <span>
+													<span class="fa fa-star checked"></span>
+													<span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+													(0%)
+												</span>
+                                            <span>0 Recenzií</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer border-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="accordion w-100 d-lg-flex" id="accordion">
+                            <div class="col-lg-3 col-md-12 my-footer">
+                                <a href="#one" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >HrajMi</a>
+                                <div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">HrajMi</div>
+                                <div class="collapse text-white d-lg-flex" id="one" data-parent="#accordion" >
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="nav-link">Kontaktujte nás</a></li>
+                                        <li><a href="#" class="nav-link">Predajne</a></li>
+                                        <li><a href="#" class="nav-link">9:00 - 20:00</a></li>
+                                        <li class="d-flex"><a href="#" class="nav-link"><span class="icon icon-facebook mr-lg-3"></span></a>
+                                            <a href="#" class="nav-link"><span class="icon icon-instagram mr-lg-3"></span></a>
+                                            <a href="#" class="nav-link"><span class="icon icon-twitter mr-lg-3"></span></a>
+                                            <a href="#" class="nav-link"><span class="icon icon-youtube mr-lg-3"></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 my-footer">
+                                <a href="#two" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >O spoločnosti</a>
+                                <div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">O spoločnosti</div>
+                                <div class="collapse text-white d-lg-flex" id="two" data-parent="#accordion" >
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="nav-link">O nás</a></li>
+                                        <li><a href="#" class="nav-link">Kariéra</a></li>
+                                        <li><a href="#" class="nav-link">Pre médiá</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 my-footer">
+                                <a href="#three" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >FAQ</a>
+                                <div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">FAQ</div>
+                                <div class="collapse text-white d-lg-flex" id="three" data-parent="#accordion" >
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="nav-link">Otázka 1</a></li>
+                                        <li><a href="#" class="nav-link">Otázka 2</a></li>
+                                        <li><a href="#" class="nav-link">Otázka 3</a></li>
+                                        <li><a href="#" class="nav-link">Načítaj ďalšie</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 my-footer">
+                                <a href="#four" data-toggle="collapse" class="h5 text-uppercase nav-link d-block d-lg-none d-xl-none" >O nákupe</a>
+                                <div class="h5 footer-heading mb-4 text-uppercase d-none d-lg-block d-xl-block">O nákupe</div>
+                                <div class="collapse text-white d-lg-flex" id="four" data-parent="#accordion" >
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="nav-link">Doprava</a></li>
+                                        <li><a href="#" class="nav-link">Reklamácia</a></li>
+                                        <li><a href="#" class="nav-link">Tabuľka veľkostí</a></li>
+                                        <li><a href="#" class="nav-link">Obchodné podmienky</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center border-top pt-2">
+            <div class="col-md-12">
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+
+        </div>
+    </footer>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

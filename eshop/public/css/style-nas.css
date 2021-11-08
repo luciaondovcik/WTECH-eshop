@@ -1,0 +1,257 @@
+html,body {
+	margin:0 auto;
+	padding:0;
+}
+
+/*header*/
+nav {
+	border-bottom: 1px solid #f3f3f4;
+}
+
+.btn-search{
+	color:#8c92a0;
+}
+
+.site-block-top-search { 
+	border-bottom: 0.1rem solid;
+	border-bottom-color: #ced4da; 
+}
+.site-navbar .icon{
+	font-size:22px;
+}
+.site-navbar .site-logo a{
+	text-transform:none;
+	font-weight: 500;
+	font-size: 30px;
+	border: none;
+}
+
+.user-btn{
+	cursor: pointer;
+}
+
+.user-btn li:hover{
+	color: #3d3f45;
+}
+
+.js-menu-toggle{
+	text-align:left;
+}
+.registration {
+	background-color:#fff;
+	color: #000;
+}
+
+/*single-product*/
+.single-product-carousel{
+	position: relative;
+	bottom:0;
+}
+.single-product-carousel li{
+	width: 100%;
+}
+
+/*cart*/
+.cart-item a{
+	color: #8c92a0;
+}
+
+.cart-item a:hover{
+	color: #7971ea;
+	text-decoration: underline;
+}
+
+/*footer*/
+.site-footer {
+	padding-bottom:0;
+	padding-top: 1rem;
+}
+
+.site-footer ul li{
+	margin-bottom:0;
+}
+
+.center {
+	text-align: center;
+}
+
+/*queries*/
+
+@media (min-width: 992px) {
+	.site-footer {
+		padding-top:0;
+	}
+	.site-footer .my-footer{
+		padding: 2rem 3rem;
+	}
+	
+	.site-footer ul li a{
+	padding: 0.5rem 0;
+	}
+}
+
+@media (max-width: 992px) {
+	.back-shop {
+		margin: 1.5rem 0;
+	}
+}
+
+@media (min-width: 768px){
+	.splitscreen .col-md-6 {
+		max-width: 100%;
+		padding-top:1rem;
+		padding-bottom:1rem;
+	}
+	
+	.cart-final{
+		flex-direction: column;
+	}
+	
+	.close-word {
+		display:none;
+	}
+}
+
+@media (min-width: 1200px){
+	.my-header{
+		display:flex;
+		justify-content: flex-end;
+	}
+	
+	.main-content {
+		min-height: calc(100vh - 150px - 350.333px);
+	}
+}
+
+
+@media (max-width: 768px){
+	.site-.main-content-heading{
+		margin-top: 5rem;
+	}
+	.my-icons{
+		display:flex;
+		justify-content: space-between;
+	}
+	
+	/*cart*/
+	.close-x {
+		display:none;
+	}
+	
+	.cart-final{
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	
+	.cart-final .btn.btn-sm {
+		padding-left:0 !important;
+	}
+	
+	.main-content {
+		min-height: calc(100vh - 212.26px - 243.667px);
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+	.my-header{
+		display:flex;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+}
+
+
+@media (min-width: 992px) and (max-width: 1200px){
+	.main-content {
+		min-height: calc(100vh - 228.333px - 350.333px);
+	}
+}
+
+@media (min-width: 768px) and (max-width: 992px){
+	.main-content {
+		min-height: calc(100vh - 228.333px - 243.667px);
+	}
+}
+
+.checked {
+	color: orange;
+}
+
+.star {
+	display: flex;
+	justify-content: space-between;
+}
+
+/*black caruosel controls*/
+.carousel-control-next,
+.carousel-control-prev {
+	filter: invert(100%);
+}
+
+/*shop-single triple navbar*/
+.nav {
+	display: -ms-flexbox;
+	-ms-flex-wrap: wrap;
+}
+.nav-pills {
+	width: 100%;
+	display: block;
+}
+.nav-pills p {
+	margin-bottom: 0; }
+.nav-pills .nav-link {
+	padding: 35px 30px !important;
+	border-radius: 0;
+	margin-bottom: 0;
+	color: #000000;
+	font-size: 22px;
+	font-weight: 700;
+	position: relative;
+	display: inline-block;
+	border: 1px solid transparent;
+	background: rgba(0, 0, 0, 0.05);
+	width: 33%;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	border-radius: 0; }
+.nav-pills .nav-link:after {
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	right: 0;
+	width: 0;
+	content: '';
+	height: 0;
+	margin: 0 auto;
+	border-style: solid;
+	border-width: 10px 10px 0 10px;
+	border-color: #db8fba transparent transparent transparent;
+	opacity: 0; }
+.nav-pills .nav-link span {
+	display: block;
+	font-size: 14px; }
+@media (max-width: 991.98px) {
+	.nav-pills .nav-link {
+		width: 100%; } }
+.nav-pills .nav-link:hover {
+	background: #7971ea;
+	color: #fff; }
+.nav-pills .nav-link.active {
+	color: #fff;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	border: 1px solid transparent;
+	background: #5a50e5; }
+.nav-pills .nav-link.active:after {
+	opacity: 1; }
+@media (max-width: 767.98px) {
+	.nav-pills .nav-link.active:after {
+		opacity: 0; } }
+@media (max-width: 767.98px) {
+	.nav-pills .nav-link {
+		display: block;
+		margin-bottom: 5px; } }
