@@ -40,18 +40,18 @@ jQuery(document).ready(function($) {
 
 		$('<div class="site-mobile-menu"></div>').prependTo('.site-wrap');
 
-		$('<div class="site-mobile-menu-header"></div>').prependTo('.site-mobile-menu');
-		$('<div class="site-mobile-menu-close "></div>').prependTo('.site-mobile-menu-header');
-		$('<div class="site-mobile-menu-logo"></div>').prependTo('.site-mobile-menu-header');
+		$('<div class="site-mobile-menu-site-header.blade.php"></div>').prependTo('.site-mobile-menu');
+		$('<div class="site-mobile-menu-close "></div>').prependTo('.site-mobile-menu-site-header.blade.php');
+		$('<div class="site-mobile-menu-logo"></div>').prependTo('.site-mobile-menu-site-header.blade.php');
 
 		$('<div class="site-mobile-menu-body"></div>').appendTo('.site-mobile-menu');
 
-		
+
 
 		$('.js-logo-clone').clone().appendTo('.site-mobile-menu-logo');
 
 		$('<span class="ion-ios-close js-menu-toggle"></div>').prependTo('.site-mobile-menu-close');
-		
+
 
 		$('.js-clone-nav').each(function() {
 			var $this = $(this);
@@ -60,11 +60,11 @@ jQuery(document).ready(function($) {
 
 
 		setTimeout(function() {
-			
+
 			var counter = 0;
       $('.site-mobile-menu .has-children').each(function(){
         var $this = $(this);
-        
+
         $this.prepend('<span class="arrow-collapse collapsed">');
 
         $this.find('.arrow-collapse').attr({
@@ -90,8 +90,8 @@ jQuery(document).ready(function($) {
       } else {
         $this.addClass('active');
       }
-      e.preventDefault();  
-      
+      e.preventDefault();
+
     });
 
 		$(window).resize(function() {
@@ -116,7 +116,7 @@ jQuery(document).ready(function($) {
 				$('body').addClass('offcanvas-menu');
 				$this.addClass('active');
 			}
-		}) 
+		})
 
 		// click outisde offcanvas
 		$(document).mouseup(function(e) {
@@ -127,7 +127,7 @@ jQuery(document).ready(function($) {
 				}
 	    }
 		});
-	}; 
+	};
 	siteMenuClone();
 
 
