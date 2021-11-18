@@ -102,13 +102,9 @@
             <nav class="site-navigation text-right text-md-center" role="navigation">
                 <div class="container">
                     <ul class="site-menu js-clone-nav d-none d-md-block p-0">
-                        <li><a href="products">Gitary</a></li>
-                        <li><a href="products">Basgitary</a></li>
-                        <li><a href="products">Klávesy</a></li>
-                        <li><a href="products">Bicie</a></li>
-                        <li><a href="products">Dychy</a></li>
-                        <li><a href="products">Sláčiky</a></li>
-                        <li><a href="products">Tradičné</a></li>
+                        @foreach($categories as $category)
+                        <li><a href={{ "$category->slug" }}>{{$category->name}}</a></li>
+                        @endforeach
                         <li><a href="products">Zľavy</a></li>
                     </ul>
                 </div>

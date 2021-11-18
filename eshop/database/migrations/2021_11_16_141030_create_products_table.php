@@ -19,10 +19,14 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands');
 
+            $table->string('slug')->nullable(false);
+
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+
             $table->string('name')->unique()->nullable(false);
             $table->float('price')->nullable(false);
             $table->float('discount');
-            $table->string('category')->nullable(false);
             $table->string('color')->nullable(false);
             $table->string('availability')->nullable(false);
             $table->text('description');

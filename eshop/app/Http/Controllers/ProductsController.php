@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -12,9 +13,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug)
     {
-        $products = Product::all();
+        $products = Product::with('categories')->whereHas('categories', function($query){
+            $query->where('id', request()->slug);
+        })->get();
         return view('products', compact('products', $products));
     }
 
