@@ -16,16 +16,16 @@
                     <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-2.jpg') }}" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-2.jpg') }}" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-3.jpg') }}" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-3.jpg') }}" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-4.jpg') }}" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-4.jpg') }}" class="d-block w-100">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
@@ -39,16 +39,16 @@
                     </div>
                     <ol class="carousel-indicators single-product-carousel mt-3">
                         <li data-target="#carouselIndicators" data-slide-to="0" class="active">
-                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
                         </li>
                         <li data-target="#carouselIndicators" data-slide-to="1">
-                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-2.jpg') }}" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-2.jpg') }}" class="d-block w-100">
                         </li>
                         <li data-target="#carouselIndicators" data-slide-to="2">
-                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-3.jpg') }}" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-3.jpg') }}" class="d-block w-100">
                         </li>
                         <li data-target="#carouselIndicators" data-slide-to="3">
-                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-4.jpg') }}" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-4.jpg') }}" class="d-block w-100">
                         </li>
                     </ol>
                 </div>

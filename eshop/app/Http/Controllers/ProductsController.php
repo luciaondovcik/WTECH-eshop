@@ -13,12 +13,13 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($slug)
+    public function index()
     {
-        $products = Product::with('categories')->whereHas('categories', function($query){
-            $query->where('id', request()->slug);
-        })->get();
-        return view('products', compact('products', $products));
+        $categories = Category::all();
+        $my_request = request()->segment(count(request()->segments()));
+        $category = Category::where('slug', $my_request)->first();
+        $products = $category->products;
+        return view('products', compact('products', 'categories'));
     }
 
     /**
@@ -48,9 +49,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $product = Product::where('id', $id)->FirstOrFail();
+        $product = Product::where('slug', $slug)->FirstOrFail();
         return view('singleproduct',compact('product', $product));
     }
 

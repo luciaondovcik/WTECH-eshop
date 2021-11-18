@@ -4,7 +4,7 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="/">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Gitary</strong></div>
+                <div class="col-md-12 mb-0"><a href="/">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ $products[0]->categories->name }}</strong></div>
             </div>
         </div>
     </div>
@@ -35,10 +35,10 @@
                             <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                                 <div class="block-4 text-center border">
                                     <figure class="block-4-image">
-                                        <a href="/products/{{$product->id}}"><img src="{{ asset('images/'.$product->category.'/'.$product->id.'-1.jpg') }}" alt="Image placeholder" class="img-fluid"></a>
+                                        <a href="/{{ $product->categories->slug }}/{{$product->slug}}"><img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" alt="Image placeholder" class="img-fluid"></a>
                                     </figure>
                                     <div class="block-4-text p-4">
-                                        <h3><a href="/products/{{$product->id}}">{{ $product->name }}</a></h3>
+                                        <h3><a href="/{{ $product->categories->slug }}/{{$product->slug}}">{{ $product->name }}</a></h3>
                                         <p class="text-primary mb-0 font-weight-bold" >{{ $product->price }} €</p>
                                         <p class="mb-0">{{ $product->availability }}</p>
                                     </div>

@@ -22,21 +22,11 @@ use App\Http\Controllers\IndexController;
 
 Route::resource('/', IndexController::class);
 
-Route::get('/gitary', function () {
-    return view('products');
-});
-
 Route::get('/cart', function () {
     return view('cart');
 });
 
-//Route::get('/{category}', function(Category $category){
-//    return view('products', [
-//        'products' => $category->products
-//    ]);
-//});
-
-Route::resource('/{category}', ProductsController::class);
+Route::resource('/{category:slug}', ProductsController::class);
 
 Route::get('/registration', function () {
     return view('registration');
