@@ -64,7 +64,7 @@ class ProductsTableSeeder extends Seeder
 
         Product::create([
             'brand_id' => 4,
-            'name' => 'Yamaha P 116 M Polished Ebony',
+            'name' => 'Yamaha P 116 M Polished Ebony black',
             'price' => 7419,
             'discount' => 30,
             'category' => 'Klávesy',
@@ -75,7 +75,7 @@ class ProductsTableSeeder extends Seeder
 
         Product::create([
             'brand_id' => 4,
-            'name' => 'Yamaha P 116 M Polished Ebony',
+            'name' => 'Yamaha P 116 M Polished Ebony white',
             'price' => 7419,
             'discount' => 30,
             'category' => 'Klávesy',

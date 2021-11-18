@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ProductsTableSeeder::class);
+        //to je len ze ked dojebes nieco v tabulke tak ti ju zhodi a vytvori zaznamy nanovo
+//        BrandsTableSeeder::truncate();
+//        ProductsTableSeeder::truncate();
+
         $this->call(BrandsTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
     }
 }

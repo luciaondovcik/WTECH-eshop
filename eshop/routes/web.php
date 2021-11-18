@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +26,7 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::get('/products', function () {
-    return view('products');
-});
-
-Route::get('/singleproduct', function () {
-    return view('singleproduct');
-});
+Route::resource('/products', ProductsController::class);
 
 Route::get('/registration', function () {
     return view('registration');

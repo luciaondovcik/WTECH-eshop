@@ -4,7 +4,7 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.html">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Gitary</strong></div>
+                <div class="col-md-12 mb-0"><a href="/">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Gitary</strong></div>
             </div>
         </div>
     </div>
@@ -31,156 +31,20 @@
             <div class="row mb-5">
                 <div class="col-md-9 order-2">
                     <div class="row mb-5">
-
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
+                        @foreach($products as $product)
+                            <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                                <div class="block-4 text-center border">
+                                    <figure class="block-4-image">
+                                        <a href="/products/{{$product->id}}"><img src="{{ asset('images/'.$product->category.'/'.$product->id.'-1.jpg') }}" alt="Image placeholder" class="img-fluid"></a>
+                                    </figure>
+                                    <div class="block-4-text p-4">
+                                        <h3><a href="/products/{{$product->id}}">{{ $product->name }}</a></h3>
+                                        <p class="text-primary mb-0 font-weight-bold" >{{ $product->price }} €</p>
+                                        <p class="mb-0">{{ $product->availability }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar4.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar2.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar3.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar4.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar4.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar2.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar3.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar4.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                            <div class="block-4 text-center border">
-                                <figure class="block-4-image">
-                                    <a href="shop-single.html"><img src="images/guitar2.jpg" alt="Image placeholder" class="img-fluid"></a>
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                    <p class="text-primary mb-0 font-weight-bold" >50 €</p>
-                                    <p class="mb-0">Skladom</p>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        @endforeach
                     </div>
                     <div class="row" data-aos="fade-up">
                         <div class="col-md-12 text-center">

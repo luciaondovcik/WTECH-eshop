@@ -4,7 +4,7 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.html">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Pasadena SG026C-38 Vintage Sunburst</strong></div>
+                <div class="col-md-12 mb-0"><a href="index.html">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ $product->name }}</strong></div>
             </div>
         </div>
     </div>
@@ -16,16 +16,16 @@
                     <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="images/guitar1.jpg" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="images/guitar2.jpg" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-2.jpg') }}" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="images/guitar3.jpg" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-3.jpg') }}" class="d-block w-100">
                             </div>
                             <div class="carousel-item">
-                                <img src="images/guitar4.jpg" class="d-block w-100">
+                                <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-4.jpg') }}" class="d-block w-100">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
@@ -39,34 +39,33 @@
                     </div>
                     <ol class="carousel-indicators single-product-carousel mt-3">
                         <li data-target="#carouselIndicators" data-slide-to="0" class="active">
-                            <img src="images/guitar1.jpg" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
                         </li>
                         <li data-target="#carouselIndicators" data-slide-to="1">
-                            <img src="images/guitar2.jpg" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-2.jpg') }}" class="d-block w-100">
                         </li>
                         <li data-target="#carouselIndicators" data-slide-to="2">
-                            <img src="images/guitar3.jpg" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-3.jpg') }}" class="d-block w-100">
                         </li>
                         <li data-target="#carouselIndicators" data-slide-to="3">
-                            <img src="images/guitar4.jpg" class="d-block w-100">
+                            <img src="{{ asset('images/'.$product->category.'/'.$product->id.'-4.jpg') }}" class="d-block w-100">
                         </li>
                     </ol>
                 </div>
 
                 <div class="col-md-6">
-                    <h2 class="text-black mt-5 mt-md-0">Pasadena SG026C-38 Vintage Sunburst</h2>
-                    <p>Samotná gitara teda prešla svojským vývojom. Pôvod gitary je zaznamenaný v Prednej Ázii, kde prvý hudobný nástroj podobný gitare tzv. kinor bol pozorovaný u Sumerov. Gitara sa dá zhotoviť z hocičoho, otázka je, akú kvalitu dosiahneme.</p>
-                    <p class="mb-4">Gitary sa robia prevažne na báze dreva, ako to bolo odjakživa. Existujú však gitary na báze syntetických materiálov (uhlíkové vlákno so svojimi dobrými elastickými vlastnosťami – RainSong Graphite Guitars) alebo sa využíva kov – oceľ na stavbu tela gitary.</p>
+                    <h2 class="text-black mt-5 mt-md-0">{{ $product->name }}</h2>
+                    <p>{{ $product->description }}</p>
                     <div style="display: flex; justify-content: space-between;">
                         <p><strong class="text-primary h4">Cena s DPH</strong></p>
-                        <p><strong class="text-primary h4">49.99 €</strong></p>
+                        <p><strong class="text-primary h4">{{ $product->price }} €</strong></p>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <p><strong class="text-primary h6">Cena bez DPH</strong></p>
                         <p><strong class="text-primary h6">41.66 €</strong></p>
                     </div>
                     <div>
-                        <p class="text-success small">Skladom</p>
+                        <p class="text-success small">{{ $product->availability }}</p>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <p><strong class="text-primary h6" style="vertical-align: bottom">Počet kusov:</strong></p>
@@ -106,12 +105,7 @@
                         <div class="tab-pane fade active show" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
                             <div class="p-4">
                                 <h3 class="mb-4">Popis produktu</h3>
-                                <p>Samotná gitara teda prešla svojským vývojom. Pôvod gitary je zaznamenaný v Prednej Ázii, kde prvý hudobný nástroj podobný gitare tzv. kinor bol pozorovaný u Sumerov. Gitara sa dá zhotoviť z hocičoho, otázka je, akú kvalitu dosiahneme. Gitary sa robia prevažne na báze dreva, ako to bolo odjakživa. Existujú však gitary na báze syntetických materiálov (uhlíkové vlákno so svojimi dobrými elastickými vlastnosťami – RainSong Graphite Guitars) alebo sa využíva kov – oceľ na stavbu tela gitary (rezofonické gitary, napríklad Dobro, Lap–steel). Bola skonštruovaná dokonca aj gitara s mramorovým telom.</p>
-                                <ul>
-                                    <li>13 pražcov</li>
-                                    <li>smrekové drevo s ebenovými doplnkami</li>
-                                    <li>struny z recyklovaných materiálov</li>
-                                </ul>
+                                <p>{{ $product->description }}</p>
                             </div>
                         </div>
 
@@ -123,7 +117,8 @@
                                     <li>13 pražcov</li>
                                     <li>smrekové drevo s ebenovými doplnkami</li>
                                     <li>struny z recyklovaných materiálov</li>
-                                </ul>							  </div>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
