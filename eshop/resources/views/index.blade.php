@@ -10,13 +10,13 @@
             </ul>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images/slideshow1.jpg" class="d-block w-100" alt="škriatkovia">
+                    <img src="images/slideshow/slideshow1.jpg" class="d-block w-100" alt="škriatkovia">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/slideshow2.jpg" class="d-block w-100" alt="vinohrad">
+                    <img src="images/slideshow/slideshow2.jpg" class="d-block w-100" alt="vinohrad">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/slideshow3.jpg" class="d-block w-100" alt="Šikulov dom">
+                    <img src="images/slideshow/slideshow3.jpg" class="d-block w-100" alt="Šikulov dom">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -44,7 +44,7 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
@@ -61,7 +61,7 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
@@ -85,7 +85,7 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
@@ -102,7 +102,7 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
@@ -131,7 +131,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="block-4 text-center">
                             <figure class="block-4-image mb-0">
-                                <a href="/{{ "$favCat->slug" }}"><img src="images/kat1.jpg" alt="{{ $favCat->slug }}" class="img-fluid"></a>
+                                <a href="/{{ "$favCat->slug" }}"><img src={{ asset('images/kategorie/kat'.$favCat->id.'.jpg') }} alt="{{ $favCat->slug }}" class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
                                 <h3><a href="/{{ "$favCat->slug" }}">{{ $favCat->name }}</a></h3>
