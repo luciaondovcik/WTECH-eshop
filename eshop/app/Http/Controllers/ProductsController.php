@@ -8,6 +8,14 @@ use App\Models\Product;
 
 class ProductsController extends Controller
 {
+//    function list(Request $request){  # <----------- don't pass the params, just the request object
+//
+//        $product = $request->route('product');   # <--- Then access by name
+//        $category = $request->route('category');
+//
+//        dd("Page: $product | Category: $category");
+//    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,10 +57,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($category, $productSlug)
     {
-        $product = Product::where('slug', $slug)->FirstOrFail();
-        return view('singleproduct',compact('product', $product));
+        $categories = Category::all();
+        $product = Product::where('slug', $productSlug)->FirstOrFail();
+        return view('singleproduct',compact('product', 'categories'));
     }
 
     /**

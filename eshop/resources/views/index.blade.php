@@ -39,60 +39,38 @@
                     </div>
                     <div class="col-md-6 col-lg-12">
                         <div class="row">
-                            <div class ="col-md-6 ">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar1.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
+                            @for ($i = 0; $i < 2; $i++)
+                                <div class ="col-md-6 ">
+                                    <div class="item">
+                                        <div class="block-4 text-center">
+                                            <figure class="block-4-image">
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            </figure>
+                                            <div class="block-4-text p-4">
+                                                <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
+                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class ="col-md-6 ">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar2.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                         <div class="row">
-                            <div class ="col-md-6 ">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar3.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
+                            @for ($i = 2; $i < 4; $i++)
+                                <div class ="col-md-6 ">
+                                    <div class="item">
+                                        <div class="block-4 text-center">
+                                            <figure class="block-4-image">
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            </figure>
+                                            <div class="block-4-text p-4">
+                                                <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
+                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class ="col-md-6 ">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar4.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                     </div>
                 </div>
@@ -102,60 +80,38 @@
                     </div>
                     <div class="col-md-6 col-lg-12">
                         <div class="row">
-                            <div class ="col-md-6 col-lg-6">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar4.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
+                            @for ($i = 4; $i < 6; $i++)
+                                <div class ="col-md-6 ">
+                                    <div class="item">
+                                        <div class="block-4 text-center">
+                                            <figure class="block-4-image">
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            </figure>
+                                            <div class="block-4-text p-4">
+                                                <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
+                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class ="col-md-6 col-lg-6">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar3.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                         <div class="row">
-                            <div class ="col-md-6 col-lg-6">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar2.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
+                            @for ($i = 6; $i < 8; $i++)
+                                <div class ="col-md-6 ">
+                                    <div class="item">
+                                        <div class="block-4 text-center">
+                                            <figure class="block-4-image">
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            </figure>
+                                            <div class="block-4-text p-4">
+                                                <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
+                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class ="col-md-6 col-lg-6">
-                                <div class="item">
-                                    <div class="block-4 text-center">
-                                        <figure class="block-4-image">
-                                            <img src="images/guitar1.jpg" alt="Image placeholder" class="img-fluid">
-                                        </figure>
-                                        <div class="block-4-text p-4">
-                                            <h3><a href="shop-single.html">Pasadena Sunburst</a></h3>
-                                            <p class="text-primary font-weight-bold">50€</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                     </div>
                 </div>
@@ -171,46 +127,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-4 text-center">
-                        <figure class="block-4-image mb-0">
-                            <img src="images/kat1.jpg" alt="Image placeholder" class="img-fluid">
-                        </figure>
-                        <div class="block-4-text p-4">
-                            <h3><a href="shop.html">Klávesy</a></h3>
+                @foreach($favouriteCategories as $favCat)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="block-4 text-center">
+                            <figure class="block-4-image mb-0">
+                                <a href="/{{ "$favCat->slug" }}"><img src="images/kat1.jpg" alt="{{ $favCat->slug }}" class="img-fluid"></a>
+                            </figure>
+                            <div class="block-4-text p-4">
+                                <h3><a href="/{{ "$favCat->slug" }}">{{ $favCat->name }}</a></h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-4 text-center">
-                        <figure class="block-4-image mb-0">
-                            <img src="images/kat2.jpg" alt="Image placeholder" class="img-fluid">
-                        </figure>
-                        <div class="block-4-text p-4">
-                            <h3><a href="shop.html">Gitary</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-4 text-center">
-                        <figure class="block-4-image mb-0">
-                            <img src="images/kat3.jpg" alt="Image placeholder" class="img-fluid">
-                        </figure>
-                        <div class="block-4-text p-4">
-                            <h3><a href="shop.html">Bicie</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-4 text-center">
-                        <figure class="block-4-image mb-0">
-                            <img src="images/kat4.jpg" alt="Image placeholder" class="img-fluid">
-                        </figure>
-                        <div class="block-4-text p-4">
-                            <h3><a href="shop.html">Sláčiky</a></h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

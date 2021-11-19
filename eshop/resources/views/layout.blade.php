@@ -103,7 +103,7 @@
                 <div class="container">
                     <ul class="site-menu js-clone-nav d-none d-md-block p-0">
                         @foreach($categories as $category)
-                        <li><a href={{ "$category->slug" }}>{{$category->name}}</a></li>
+                        <li><a href="/{{ "$category->slug" }}">{{$category->name}}</a></li>
                         @endforeach
                         <li><a href="products">Zľavy</a></li>
                     </ul>

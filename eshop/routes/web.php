@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\IndexController;
@@ -16,17 +15,16 @@ use App\Http\Controllers\IndexController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('index');
-//});
-
 Route::resource('/', IndexController::class);
 
 Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::resource('/{category:slug}', ProductsController::class);
+Route::get('/{category}/{product}', 'App\Http\Controllers\ProductsController@show');
+
+Route::resource('/{category}', ProductsController::class);
+
 
 Route::get('/registration', function () {
     return view('registration');
