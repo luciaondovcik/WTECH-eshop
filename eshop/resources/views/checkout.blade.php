@@ -151,11 +151,11 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h3 class="mb-3 text-center text-black">Zhrnutie objednávky</h3>
-                            <h6 class="mb-3 text-center">V košíku máš <strong class="text-black">4</strong> produkty.</h6>
+                            <h6 class="mb-3 text-center">Počet produktov v košíku: <strong class="text-black">{{Cart::count()}}</strong></h6>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Produkty:
-                                    <span>5625.69€</span>
+                                    <span>{{Cart::total()}} €</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Doprava:
@@ -163,16 +163,16 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
                                     Zľava:
-                                    <span>562.57€</span>
+                                    <span>56ssss2.57 €</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-top px-0 mb-3">
                                     <div>
                                         <strong>Spolu:</strong>
                                     </div>
-                                    <span><strong>5063.12€</strong></span>
+                                    <span><strong>506sss3.12 €</strong></span>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary btn-block waves-effect waves-light" onclick="window.location.href='payment';"><strong>Pokračuj</strong></button>
+                            <a href="{{route('payment.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Pokračuj</strong></a>
                             <button type="button" class="btn btn-block" onclick="window.location.href='cart';">Krok späť</button>
                         </div>
                     </div>

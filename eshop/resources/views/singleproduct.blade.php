@@ -58,33 +58,48 @@
                     <p>{{ $product->description }}</p>
                     <div style="display: flex; justify-content: space-between;">
                         <p><strong class="text-primary h4">Cena s DPH</strong></p>
-                        <p><strong class="text-primary h4">{{ $product->price }} €</strong></p>
+                        <p><strong class="text-primary h4">{{ number_format((float)$product->price, 2, '.', ' ') }} €</strong></p>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <p><strong class="text-primary h6">Cena bez DPH</strong></p>
-                        <p><strong class="text-primary h6">41.66 €</strong></p>
+                        <p><strong class="text-primary h6">{{ number_format((float)$product->price/1.2, 2, '.', ' ') }} €</strong></p>
                     </div>
                     <div>
                         <p class="text-success small">{{ $product->availability }}</p>
                     </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <p><strong class="text-primary h6" style="vertical-align: bottom">Počet kusov:</strong></p>
-                        <div class="mb-5">
-                            <div class="input-group mb-3" style="max-width: 300px;">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                                </div>
-                                <div style="max-width: 75px;">
-                                    <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+
+
+
+                        <form action="{{route('cart.store')}}" method="POST">
+                            {{csrf_field()}}
+                            <div style="display: flex; justify-content: space-between; max-height: 40px">
+                                <p><strong class="text-primary h6" style="vertical-align: bottom">Počet kusov:</strong></p>
+                                <div class="mb-5">
+                                    <div class="input-group mb-3" style="max-width: 300px;">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                        </div>
+                                        <div style="max-width: 75px;">
+                                            <input type="text" name="qty" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                        </div>
+
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                </div>
+
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="name" value="{{ $product->name }}">
+                            <input type="hidden" name="price" value="{{ $product->price }}">
+                                <button type="submit" class="buy-now btn btn-sm btn-primary">Kúpiť</button>
+
                             </div>
-                        </div>
-                        <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">Kúpiť</a></p>
-                    </div>
+
+                        </form>
+
+
                 </div>
             </div>
 

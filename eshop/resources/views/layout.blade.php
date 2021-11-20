@@ -85,9 +85,14 @@
                                     </div>
                                 </div>
                                 <li>
-                                    <a href="cart" class="site-cart ml-2">
+                                    <a href="{{route('cart.index')}}" class="site-cart ml-2">
                                         <span class="icon icon-shopping_cart"></span>
-                                        <span class="count">2</span>
+
+                                        @if (Cart::instance('default')->count() < 10)
+                                        <span class="count">{{Cart::instance('default')->count()}}</span>
+                                        @else
+                                        <span class="count">9+</span>
+                                        @endif
                                     </a>
                                 </li>
 
@@ -197,6 +202,11 @@
 <script src="/js/jquery.magnific-popup.min.js"></script>
 <script src="/js/aos.js"></script>
 <script src="/js/main.js"></script>
+
+</body>
+
+<body class="@yield('body-class','')">
+@yield('extra-js')
 
 </body>
 </html>

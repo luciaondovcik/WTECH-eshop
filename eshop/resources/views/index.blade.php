@@ -48,7 +48,7 @@
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
                                             </div>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ $products[$i]->price }}€</p>
+                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
                                             </div>
                                         </div>
                                     </div>

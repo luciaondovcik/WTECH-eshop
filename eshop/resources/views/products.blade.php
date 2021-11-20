@@ -39,7 +39,7 @@
                                     </figure>
                                     <div class="block-4-text p-4">
                                         <h3><a href="/{{ $product->categories->slug }}/{{$product->slug}}">{{ $product->name }}</a></h3>
-                                        <p class="text-primary mb-0 font-weight-bold" >{{ $product->price }} €</p>
+                                        <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$product->price, 2, '.', ' ') }} €</p>
                                         <p class="mb-0">{{ $product->availability }}</p>
                                     </div>
                                 </div>
