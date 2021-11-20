@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Brand;
 
 class ProductsController extends Controller
 {
@@ -23,11 +24,50 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $btnName = 'Nás :)';
         $categories = Category::all();
-        $my_request = request()->segment(count(request()->segments()));
-        $category = Category::where('slug', $my_request)->first();
-        $products = $category->products;
-        return view('products', compact('products', 'categories'));
+        $selected_category = Category::where('slug', request()->category)->first();
+        if (request()->orderBy) {
+            $products = Product::where('category_id', $selected_category->id)->orderBy(request()->orderBy, request()->type);
+            if (request()->orderBy == 'name' && request()->type == 'asc')
+                $btnName = 'Názov - A až Z';
+            else if (request()->orderBy == 'name' && request()->type == 'desc')
+                $btnName = 'Názov - Z až A';
+            else if (request()->orderBy == 'price' && request()->type == 'asc')
+                $btnName = 'Cena - vzostupne';
+            else if (request()->orderBy == 'price' && request()->type == 'desc')
+                $btnName = 'Cena - zostupne';
+        }else{
+            $products = Product::where('category_id', $selected_category->id);
+        }
+        $brands = collect();
+        $colors = collect();
+        foreach($products->get() as $product) {
+            if (!$brands->contains('name', $product->brands->name))
+                $brands->push($product->brands);
+            if (!$colors->contains($product->color))
+                $colors->push($product->color);
+        }
+
+        //bocny filter
+        if(request()->filter_brand){
+            $products = $products->whereIn('brand_id', request()->filter_brand);
+        }
+        if(request()->filter_color){
+            $products = $products->whereIn('color', request()->filter_color);
+        }
+        if(request()->filter_availability){
+            $products = $products->whereIn('availability', request()->filter_availability);
+        }
+        echo "kkt";
+        echo request()->amount;
+        if(request()->amount){
+            echo "serus";
+            $products = $products->whereBetween('price', explode(',', [request()->price->min, request()->price->max]));
+        }
+        $products = $products->paginate(12);
+
+        return view('products', compact('products', 'categories', 'brands', 'colors', 'btnName'));
     }
 
     /**

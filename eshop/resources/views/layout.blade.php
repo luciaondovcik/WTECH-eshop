@@ -42,9 +42,9 @@
 
                     <div class="col-12 col-xl-5 order-3 order-xl-3 text-right my-header">
                         <div class="site-search-icon text-left">
-                            <form action="" class="site-block-top-search d-flex align-items-center">
-                                <button type="button" class="btn btn-link pt-2 btn-search"><span class="icon icon-search2"></span></button>
-                                <input type="text" class="form-control border-0" placeholder="Chcem si kúpiť...">
+                            <form action="/search" method="GET" class="site-block-top-search d-flex align-items-center">
+                                <button type="submit" class="btn btn-link pt-2 btn-search"><span class="icon icon-search2"></span></button>
+                                <input type="text" name="query" id="query" value="{{ request()->input('query') }}" class="form-control border-0" placeholder="Chcem si kúpiť...">
                             </form>
                         </div>
                         <div class="site-top-icons mt-4 mt-xl-0 my-icons">
@@ -108,7 +108,7 @@
                 <div class="container">
                     <ul class="site-menu js-clone-nav d-none d-md-block p-0">
                         @foreach($categories as $category)
-                        <li><a href="/{{ "$category->slug" }}">{{$category->name}}</a></li>
+                        <li><a href="{{ route('products.index', ['category'=>$category->slug])}}">{{$category->name}}</a></li>
                         @endforeach
                         <li><a href="products">Zľavy</a></li>
                     </ul>
