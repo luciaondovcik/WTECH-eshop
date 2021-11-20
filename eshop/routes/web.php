@@ -14,6 +14,7 @@ use App\Http\Controllers\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/search', 'App\Http\Controllers\IndexController@search');
 
 Route::resource('/', IndexController::class);
 
@@ -23,7 +24,7 @@ Route::get('/cart', function () {
 
 Route::get('/{category}/{product}', 'App\Http\Controllers\ProductsController@show');
 
-Route::resource('/{category}', ProductsController::class);
+Route::get('/{category}', 'App\Http\Controllers\ProductsController@index')->name('products.index');
 
 
 Route::get('/registration', function () {

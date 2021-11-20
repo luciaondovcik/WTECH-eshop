@@ -13,17 +13,17 @@
         <div class="container">
             <div class="row border-bottom border-top mb-4">
                 <div class="col-md-12 d-flex justify-content-between my-2">
-                    <p class="my-auto">1-12 z 68</p>
+                    <p class="my-auto">{{ $products->firstItem() }}-{{ $products->lastItem() }} z {{ $products->total() }}</p>
                     <div class="dropdown mr-1 ml-md-auto d-flex justify-content-end">
                         <p class=" my-auto mr-2">Zoradiť podľa:</p>
                         <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Obľúbené
+                            {{ $btnName }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                            <a class="dropdown-item" href="#">Názov - A až Z</a>
-                            <a class="dropdown-item" href="#">Názov - Z až A</a>
-                            <a class="dropdown-item" href="#">Cena - vzostupne</a>
-                            <a class="dropdown-item" href="#">Cena - zostupne</a>
+                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$products[0]->categories->slug,'orderBy'=>'name', 'type'=>'asc'])}}">Názov - A až Z</a>
+                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$products[0]->categories->slug,'orderBy'=>'name', 'type'=>'desc'])}}">Názov - Z až A</a>
+                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$products[0]->categories->slug,'orderBy'=>'price', 'type'=>'asc'])}}">Cena - vzostupne</a>
+                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$products[0]->categories->slug,'orderBy'=>'price', 'type'=>'desc'])}}">Cena - zostupne</a>
                         </div>
                     </div>
                 </div>
@@ -49,15 +49,7 @@
                     <div class="row" data-aos="fade-up">
                         <div class="col-md-12 text-center">
                             <div class="site-block-27">
-                                <ul>
-                                    <li><a href="#">&lt;</a></li>
-                                    <li class="active"><span>1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">&gt;</a></li>
-                                </ul>
+                                {{ $products->links() }}
                             </div>
                         </div>
                     </div>
@@ -66,49 +58,41 @@
                 <div class="col-md-3 order-1 mb-5 mb-md-0">
                     <div class="border p-4 rounded mb-4">
                         <div class="mb-4">
-                            <h3 class="mb-3 h6 text-uppercase text-black d-block">Značka</h3>
-                            <label for="m_yamaha" class="d-flex">
-                                <input type="checkbox" id="m_yamaha" class="mr-2 mt-1"> <span class="text-black">Yamaha</span>
-                            </label>
-                            <label for="m_sencor" class="d-flex">
-                                <input type="checkbox" id="m_sencor" class="mr-2 mt-1"> <span class="text-black">Sencor</span>
-                            </label>
-                            <label for="m_gibson" class="d-flex">
-                                <input type="checkbox" id="m_gibson" class="mr-2 mt-1"> <span class="text-black">Gibson</span>
-                            </label>
-                        </div>
-                        <div class="mb-4" >
-                            <h3 class="mb-3 h6 text-uppercase text-black d-block">Farba</h3>
-                            <a href="#" class="d-flex color-item align-items-center" >
-                                <input type="checkbox" id="c_r" class="mr-2 mt-1"> <span class="bg-danger color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Červená (35)</span>
-                            </a>
-                            <a href="#" class="d-flex color-item align-items-center" >
-                                <input type="checkbox" id="c_g" class="mr-2 mt-1"> <span class="bg-success color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Zelená (22)</span>
-                            </a>
-                            <a href="#" class="d-flex color-item align-items-center" >
-                                <input type="checkbox" id="c_b" class="mr-2 mt-1"> <span class="bg-info color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Modrá (8)</span>
-                            </a>
-                            <a href="#" class="d-flex color-item align-items-center" >
-                                <input type="checkbox" id="c_p" class="mr-2 mt-1"> <span class="bg-primary color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Fialová (3)</span>
-                            </a>
-                        </div>
-                        <div class="mb-4">
-                            <h3 class="mb-3 h6 text-uppercase text-black d-block">Dostupnosť</h3>
-                            <label for="a_a" class="d-flex">
-                                <input type="checkbox" id="a_a" class="mr-2 mt-1"> <span class="text-black">Na sklade</span>
-                            </label>
-                            <label for="a_o" class="d-flex">
-                                <input type="checkbox" id="a_o" class="mr-2 mt-1"> <span class="text-black">Na objednávku</span>
-                            </label>
-                            <label for="a_na" class="d-flex">
-                                <input type="checkbox" id="a_na" class="mr-2 mt-1"> <span class="text-black">Nedostupné</span>
-                            </label>
-                        </div>
-                        <div class="mb-4">
-                            <h3 class="mb-3 h6 text-uppercase text-black d-block">Cena</h3>
-                            <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white center" disabled="" />
-                            <div id="slider-range" class="border-primary"></div>
-                        </div>
+                            <form action="{{ $products[0]->categories->slug }}" method="GET">
+                                <h3 class="mb-3 h6 text-uppercase text-black d-block">Značka</h3>
+                                @foreach($brands as $brand)
+                                    <label for="{{ $brand->name }}" class="d-flex">
+                                        <input type="checkbox" name="filter_brand[]" value="{{ $brand->id }}" class="mr-2 mt-1"> <span class="text-black">{{ $brand->name }}</span>
+                                    </label>
+                                @endforeach
+                            </div>
+                            <div class="mb-4" >
+                                <h3 class="mb-3 h6 text-uppercase text-black d-block">Farba</h3>
+                                @foreach($colors as $color)
+                                    <label for="{{ $color }}" class="d-flex">
+                                        <input type="checkbox" name="filter_color[]" value="{{ $color }}" class="mr-2 mt-1"><span class="text-black">{{ $color }}</span>
+                                    </label>
+                                @endforeach
+                            </div>
+                            <div class="mb-4">
+                                <h3 class="mb-3 h6 text-uppercase text-black d-block">Dostupnosť</h3>
+                                <label for="Dostupne" class="d-flex">
+                                    <input type="checkbox" name="filter_availability[]" value="dostupné" class="mr-2 mt-1"> <span class="text-black">Dostupné</span>
+                                </label>
+                                <label for="Nedostupne" class="d-flex">
+                                    <input type="checkbox" name="filter_availability[]" value="nedostupné" class="mr-2 mt-1"> <span class="text-black">Nedostupné</span>
+                                </label>
+                            </div>
+                            <div class="mb-4">
+                                <h3 class="mb-3 h6 text-uppercase text-black d-block">Cena</h3>
+                                <input type="text" name="amount" id="amount" class="form-control border-0 pl-0 bg-white center" disabled="" />
+                                <div id="slider-range" class="border-primary"></div>
+                            </div>
+                            <div class="mt-5 mb-4">
+                                <button type="submit" class="btn btn-primary btn-block"><strong>Filtruj</strong></button>
+                                <button type="button" class="btn btn-secondary btn-block">Zrušiť filter</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
