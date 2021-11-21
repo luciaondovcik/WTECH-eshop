@@ -51,8 +51,23 @@
                             <ul>
                                 <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                             </ul>
-                            <ul class="user-btn p-1 ml-xl-2">
-                                <li data-toggle="modal" data-target="#exampleModal">Neprihlásený <span class="icon icon-person"></span></li>
+                            <ul class="user-btn p-1 ml-xl-2 d-flex">
+                                @auth
+                                    <div class="dropdown">
+                                        <span>Vitaj</span>
+                                        <button class="btn btn-light p-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="icon icon-person"></span>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <form method="POST" action="/logout">
+                                                @csrf
+                                                <button class="dropdown-item p-1" type="submit">Odhlásiť sa</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @else
+                                    <li data-toggle="modal" data-target="#exampleModal">Neprihlásený<span class="icon icon-person"></span></li>
+                                @endauth
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,20 +80,29 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body m-3">
-                                                <form>
+                                                <form method="POST" action="/login">
+                                                    @csrf
                                                     <div class="form-group border-bottom">
-                                                        <input type="email" class="form-control border-0" id="email-usr" aria-describedby="emailHelp" placeholder="Enter email">
+                                                        <input type="email" name="email" class="form-control border-0" id="email-usr" aria-describedby="emailHelp" placeholder="Enter email">
                                                     </div>
+                                                    @error('email')
+                                                    <small class="text-danger text-xs mt-1">{{ $message }}</small>
+                                                    @enderror
                                                     <div class="form-group border-bottom">
-                                                        <input type="password" class="form-control border-0" id="password-usr" placeholder="Password">
+                                                        <input type="password" name="password" class="form-control border-0" id="password-usr" placeholder="Password">
                                                     </div>
+                                                    @error('password')
+                                                    <small class="text-danger text-xs mt-1">{{ $message }}</small>
+                                                    @enderror
 
                                                     <div class="d-flex justify-content-center m-3 mt-5">
                                                         <button type="submit" class="btn btn-primary">Prihlásiť</button>
                                                     </div>
+                                                    @guest
                                                     <div class="d-flex justify-content-center m-3 mt-4">
-                                                        <button type="button" class="btn btn-primary registration border-0" onclick="window.location.href='registration';">Registrácia</button>
+                                                        <button type="button" class="btn btn-primary registration border-0"><a href="/registration">Registrácia</a></button>
                                                     </div>
+                                                    @endguest
                                                 </form>
                                             </div>
                                         </div>
@@ -122,7 +146,7 @@
     </main>
 
     <footer class="site-footer border-top">
-            <div class="container-fluid">
+            <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">

@@ -1,10 +1,9 @@
 <?php
 
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +19,12 @@ Route::get('/search', 'App\Http\Controllers\IndexController@search');
 
 Route::resource('/', IndexController::class);
 
+Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+
+Route::get('/registration', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/registration', [RegisterController::class, 'store'])->middleware('guest');
+
 Route::get('/cart','App\Http\Controllers\CartController@index')->name('cart.index');
 Route::post('/cart','App\Http\Controllers\CartController@store')->name('cart.store');
 Route::delete('/cart/{product}','App\Http\Controllers\CartController@destroy')->name('cart.destroy');
@@ -33,10 +38,6 @@ Route::get('/{category}/{product}', 'App\Http\Controllers\ProductsController@sho
 Route::get('/{category}', 'App\Http\Controllers\ProductsController@index')->name('products.index');
 
 
-Route::get('/registration', function () {
-    return view('registration');
-});
-
 Route::get('/thankyou', function () {
     return view('thankyou');
 });
@@ -44,3 +45,4 @@ Route::get('/thankyou', function () {
 Route::get('/payment', function () {
     return view('payment');
 });
+

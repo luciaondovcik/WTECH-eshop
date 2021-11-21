@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('main-content')
-    <section class="container-fluid">
+    <section class="container-fluid p-0">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ul class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

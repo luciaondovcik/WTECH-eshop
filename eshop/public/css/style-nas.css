@@ -1,6 +1,7 @@
 html,body {
 	margin:0 auto;
 	padding:0;
+    width: 100%;
 }
 
 /*header*/
@@ -28,6 +29,11 @@ nav {
 
 .user-btn{
 	cursor: pointer;
+}
+
+.btn-light{
+    background-color: transparent;
+    color: #8c92a0;
 }
 
 .user-btn li:hover{
