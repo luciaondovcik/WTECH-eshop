@@ -44,7 +44,7 @@
                         <div class="site-search-icon text-left">
                             <form action="/search" method="GET" class="site-block-top-search d-flex align-items-center">
                                 <button type="submit" class="btn btn-link pt-2 btn-search"><span class="icon icon-search2"></span></button>
-                                <input type="text" name="query" id="query" value="{{ request()->input('query') }}" class="form-control border-0" placeholder="Chcem si kúpiť...">
+                                <input type="text" name="query" id="query" value="{{ request()->input('query') }}" class="form-control border-0" placeholder="Chcem si kúpiť..." autocomplete="off">
                             </form>
                         </div>
                         <div class="site-top-icons mt-4 mt-xl-0 my-icons">

@@ -50,24 +50,27 @@ class ProductsController extends Controller
         }
 
         //bocny filter
-        if(request()->filter_brand){
-            $products = $products->whereIn('brand_id', request()->filter_brand);
+        if(request()->filterBrand){
+            $products = $products->whereIn('brand_id', request()->filterBrand);
         }
-        if(request()->filter_color){
-            $products = $products->whereIn('color', request()->filter_color);
+        if(request()->filterColor){
+            $products = $products->whereIn('color', request()->filterColor);
         }
-        if(request()->filter_availability){
-            $products = $products->whereIn('availability', request()->filter_availability);
+        if(request()->filterAvailability){
+            $products = $products->whereIn('availability', request()->filterAvailability);
         }
-        echo "kkt";
-        echo request()->amount;
-        if(request()->amount){
-            echo "serus";
-            $products = $products->whereBetween('price', explode(',', [request()->price->min, request()->price->max]));
+        if(request()->minval || request()->maxval){
+            $priceMin = request()->minval;
+            $priceMax = request()->maxval;
+            $products = $products->whereBetween('price', [$priceMin, $priceMax]);
+        }else{
+            $priceMin = 0;
+            $priceMax = 1000;
         }
-        $products = $products->paginate(12);
 
-        return view('products', compact('products', 'categories', 'brands', 'colors', 'btnName'));
+        $products = $products->paginate(12);
+        $request = request();
+        return view('products', compact('products', 'categories', 'selected_category', 'brands', 'colors', 'btnName', 'request' ,'priceMax', 'priceMin'));
     }
 
     /**

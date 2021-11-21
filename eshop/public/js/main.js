@@ -157,11 +157,12 @@ jQuery(document).ready(function($) {
 		  return [this.min, this.max]
 		},
       slide: function( event, ui ) {
-			$( "#amount" ).val( ui.values[ 0 ] + " € - " + ui.values[ 1 ] + " €");
+          $("#minval").val(ui.values[0]);
+          $("#maxval").val(ui.values[1]);
       }
     });
-    $( "#amount" ).val($( "#slider-range" ).slider( "values", 0 ) +
-      " € - " + $( "#slider-range" ).slider( "values", 1 ) + " €" );
+    $( "#minval" ).val($( "#slider-range" ).slider( "values", 0 ));
+    $("#maxval").val($( "#slider-range" ).slider( "values", 1 ));
 	};
 	siteSliderRange();
 
