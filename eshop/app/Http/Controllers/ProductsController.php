@@ -26,9 +26,17 @@ class ProductsController extends Controller
     {
         $btnName = 'Nás :)';
         $categories = Category::all();
-        $selected_category = Category::where('slug', request()->category)->first();
+
+        if(request()->category == "zlavy"){
+            $selected_category = -1;
+            $products = Product::where('discount', '>', 0);
+        }else {
+            $selected_category = Category::where('slug', request()->category)->first();
+            $products = Product::where('category_id', $selected_category->id);
+        }
+
         if (request()->orderBy) {
-            $products = Product::where('category_id', $selected_category->id)->orderBy(request()->orderBy, request()->type);
+            $products = $products->orderBy(request()->orderBy, request()->type);
             if (request()->orderBy == 'name' && request()->type == 'asc')
                 $btnName = 'Názov - A až Z';
             else if (request()->orderBy == 'name' && request()->type == 'desc')
@@ -37,9 +45,8 @@ class ProductsController extends Controller
                 $btnName = 'Cena - vzostupne';
             else if (request()->orderBy == 'price' && request()->type == 'desc')
                 $btnName = 'Cena - zostupne';
-        }else{
-            $products = Product::where('category_id', $selected_category->id);
         }
+
         $brands = collect();
         $colors = collect();
         foreach($products->get() as $product) {

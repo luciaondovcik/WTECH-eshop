@@ -136,7 +136,7 @@
                         @foreach($categories as $category)
                         <li><a href="{{ route('products.index', ['category'=>$category->slug])}}">{{$category->name}}</a></li>
                         @endforeach
-                        <li><a href="products">Zľavy</a></li>
+                        <li><a href="zlavy">Zľavy</a></li>
                     </ul>
                 </div>
             </nav>

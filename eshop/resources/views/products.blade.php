@@ -4,7 +4,13 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="/">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ $selected_category->name }}</strong></div>
+                <div class="col-md-12 mb-0"><a href="/">Domov</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">
+                        @if($selected_category == "-1")
+                            Zľavy
+                        @else
+                            {{ $selected_category->name }}
+                        @endif
+                    </strong></div>
             </div>
         </div>
     </div>
@@ -13,17 +19,31 @@
         <div class="container">
             <div class="row border-bottom border-top mb-4">
                 <div class="col-md-12 d-flex justify-content-between my-2">
-                    <p class="my-auto">{{ $products->firstItem() }}-{{ $products->lastItem() }} z {{ $products->total() }}</p>
+                    <p class="my-auto">
+                        @if($products->count() > 0)
+                            {{ $products->firstItem() }}-{{ $products->lastItem() }} z {{ $products->total() }}
+                        @else
+                            0 produktov
+                        @endif
+                    </p>
+
                     <div class="dropdown mr-1 ml-md-auto d-flex justify-content-end">
                         <p class=" my-auto mr-2">Zoradiť podľa:</p>
                         <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ $btnName }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'name', 'type'=>'asc'])}}">Názov - A až Z</a>
-                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'name', 'type'=>'desc'])}}">Názov - Z až A</a>
-                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'price', 'type'=>'asc'])}}">Cena - vzostupne</a>
-                            <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'price', 'type'=>'desc'])}}">Cena - zostupne</a>
+                            @if($selected_category == "-1")
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>'zlavy','orderBy'=>'name', 'type'=>'asc'])}}">Názov - A až Z</a>
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>'zlavy','orderBy'=>'name', 'type'=>'desc'])}}">Názov - Z až A</a>
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>'zlavy','orderBy'=>'price', 'type'=>'asc'])}}">Cena - vzostupne</a>
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>'zlavy','orderBy'=>'price', 'type'=>'desc'])}}">Cena - zostupne</a>
+                            @else
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'name', 'type'=>'asc'])}}">Názov - A až Z</a>
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'name', 'type'=>'desc'])}}">Názov - Z až A</a>
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'price', 'type'=>'asc'])}}">Cena - vzostupne</a>
+                                <a class="dropdown-item" href="{{ route('products.index', ['category'=>$selected_category->slug,'orderBy'=>'price', 'type'=>'desc'])}}">Cena - zostupne</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -58,7 +78,11 @@
                 <div class="col-md-3 order-1 mb-5 mb-md-0">
                     <div class="border p-4 rounded mb-4">
                         <div class="mb-4">
-                            <form action="{{ $selected_category->slug }}" method="GET" id="filter-form">
+                            @if($selected_category == "-1")
+                                <form action="Zľavy" method="GET" id="filter-form">
+                            @else
+                                <form action="{{ $selected_category->slug }}" method="GET" id="filter-form">
+                            @endif
                                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Značka</h3>
                                 @foreach($brands as $brand)
                                     <label for="{{ $brand->name }}" class="d-flex">
