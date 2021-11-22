@@ -65,7 +65,7 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Produkty:
-                                    <span>5625.69€</span>
+                                    <span>{{Cart::total()}} €</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Doprava:
@@ -73,17 +73,16 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
                                     Zľava:
-                                    <span>562.57€</span>
+                                    <span>562ssss.57€</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-top px-0 mb-3">
                                     <div>
                                         <strong>Spolu:</strong>
                                     </div>
-                                    <span><strong>5063.12€</strong></span>
+                                    <span><strong>{{Cart::total()}} € + doprava</strong></span>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary btn-block waves-effect waves-light" onclick="window.location.href='thankyou';"><strong>Dokonči</strong></button>
-                            <button type="button" class="btn btn-block" onclick="window.location.href='checkout';">Krok späť</button>
+                            <a href="{{route('thankyou.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Dokonči</strong></a>                            <button type="button" class="btn btn-block" onclick="window.location.href='checkout';">Krok späť</button>
                         </div>
                     </div>
                     <!-- Card -->
@@ -92,7 +91,9 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn back-shop" onclick="window.location.href='shop';">Späť k nákupu</button>
+{{--                    <button type="button" class="btn back-shop" onclick="window.location.href='shop';">Späť k nákupu</button>--}}
+                    <a href="javascript:history.back(); history.back(); history.back(); history.back()" class="btn back-shop">Späť k nákupu</a>
+
                 </div>
             </div>
         </div>

@@ -24,6 +24,8 @@
                             <p class="my-2 text-center">Doprava a platba</p>
                         </div>
                     </div>
+                    <form action="{{ route('checkout.store') }}" method="POST">
+                        {{csrf_field()}}
                     <div class="p-3 p-lg-4 border">
                         <h2 class="h3 mb-3 text-black">KONTAKTNÉ ÚDAJE</h2>
                         <div class="form-group row">
@@ -60,7 +62,7 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="c_state_city" class="text-black">Mesto <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_state_city" name="c_state_city">
+                                <input type="text" class="form-control" id="c_state_city" name="c_state_city" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="c_state_country" class="text-black">Krajina <span class="text-danger">*</span></label>
@@ -140,11 +142,13 @@
                             </div>
                         </div>
                         <div class="form-group row bg-light p-3 mx-auto">
-                            <label class="text-black"><input type="checkbox"><strong> Oboznámil som sa s obchodnými podmienkami e-shopu HrajMi.sk a súhlasím s nimi. <span class="text-danger">*</span></strong></label>
+                            <label class="text-black"><input type="checkbox" required><strong> Oboznámil som sa s obchodnými podmienkami e-shopu HrajMi.sk a súhlasím s nimi. <span class="text-danger">*</span></strong></label>
                             <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut dapibus risus. Aenean in scelerisque purus. Nullam tincidunt enim quis enim pharetra, molestie aliquam turpis luctus. Aliquam quis tempor leo. Etiam congue porttitor sagittis. Suspendisse eget tempor arcu. Aenean lacinia lobortis quam vitae scelerisque. Suspendisse ac massa blandit, tincidunt orci ac, laoreet est. Nam metus elit, mollis non velit fringilla, pharetra venenatis felis.</p>
                         </div>
 
                     </div>
+                        <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Pokračuj</button>
+                    </form>
                 </div>
                 <div class="col-md-4">
                     <!-- Card -->
@@ -172,7 +176,7 @@
                                     <span><strong>506sss3.12 €</strong></span>
                                 </li>
                             </ul>
-                            <a href="{{route('payment.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Pokračuj</strong></a>
+{{--                            <a href="{{route('payment.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Pokračuj</strong></a>--}}
                             <button type="button" class="btn btn-block" onclick="window.location.href='cart';">Krok späť</button>
                         </div>
                     </div>
@@ -182,7 +186,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn back-shop" onclick="window.location.href='shop';">Späť k nákupu</button>
+{{--                    <button type="button" class="btn back-shop" onclick="window.location.href='shop';">Späť k nákupu</button>--}}
+                    <a href="javascript:history.back(); history.back(); history.back()" class="btn back-shop">Späť k nákupu</a>
                 </div>
             </div>
         </div>
