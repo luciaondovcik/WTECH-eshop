@@ -71,7 +71,4 @@
             </div>
         </div>
     </section>
-
-    @yield('flash-msg')
-
 @endsection
