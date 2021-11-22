@@ -121,7 +121,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn back-shop" onclick="window.location.href='shop.html';">Späť k nákupu</button>
+                    <a href="javascript:history.back(); history.back();" class="btn back-shop">Späť k nákupu</a>
+{{--                    <button type="button" class="btn back-shop" onclick="window.location.href='shop.html';">Späť k nákupu</button>--}}
                 </div>
             </div>
         </div>

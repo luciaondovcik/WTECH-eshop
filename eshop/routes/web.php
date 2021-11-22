@@ -25,8 +25,10 @@ Route::post('/cart','App\Http\Controllers\CartController@store')->name('cart.sto
 Route::delete('/cart/{product}','App\Http\Controllers\CartController@destroy')->name('cart.destroy');
 
 Route::get('/payment','App\Http\Controllers\PaymentController@index')->name('payment.index');
+Route::get('/thankyou','App\Http\Controllers\ThankyouController@index')->name('thankyou.index');
 
 Route::get('/checkout','App\Http\Controllers\CheckoutController@index')->name('checkout.index');
+Route::post('/checkout','App\Http\Controllers\CheckoutController@store')->name('checkout.store');
 
 Route::get('/{category}/{product}', 'App\Http\Controllers\ProductsController@show');
 
@@ -37,10 +39,4 @@ Route::get('/registration', function () {
     return view('registration');
 });
 
-Route::get('/thankyou', function () {
-    return view('thankyou');
-});
 
-Route::get('/payment', function () {
-    return view('payment');
-});

@@ -64,6 +64,15 @@
                         <p><strong class="text-primary h6">Cena bez DPH</strong></p>
                         <p><strong class="text-primary h6">{{ number_format((float)$product->price/1.2, 2, '.', ' ') }} €</strong></p>
                     </div>
+
+                    @if($product->discount > 0)
+                        <div style="display: flex; justify-content: space-between;">
+                            <p><strong class="text-danger h4">Po zľave ({{ ($product->discount) }} %)</strong></p>
+                            <p><strong class="text-danger h4">{{ number_format((float)$product->price * (100-($product->discount))/100, 2, '.', ' ') }} €
+                                </strong></p>
+                        </div>
+                    @endif
+
                     <div>
                         <p class="text-success small">{{ $product->availability }}</p>
                     </div>
@@ -92,7 +101,7 @@
 
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <input type="hidden" name="name" value="{{ $product->name }}">
-                            <input type="hidden" name="price" value="{{ $product->price }}">
+                            <input type="hidden" name="price" value="{{ $product->price * (100-($product->discount))/100}}">
                                 <button type="submit" class="buy-now btn btn-sm btn-primary">Kúpiť</button>
 
                             </div>

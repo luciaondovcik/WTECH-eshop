@@ -39,8 +39,14 @@
                                     </figure>
                                     <div class="block-4-text p-4">
                                         <h3><a href="/{{ $product->categories->slug }}/{{$product->slug}}">{{ $product->name }}</a></h3>
-                                        <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$product->price, 2, '.', ' ') }} €</p>
-                                        <p class="mb-0">{{ $product->availability }}</p>
+                                        @if($product->discount > 0)
+                                        <span class="text-danger mb-0 font-weight-bold" >{{ number_format((float)$product->price * (100-($product->discount))/100, 2, '.', ' ') }} €</span>
+                                        <span class="text-primary mb-0 font-weight-bold" ><s>{{ number_format((float)$product->price, 2, '.', ' ') }} €</s></span>
+
+                                        @else
+                                            <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$product->price, 2, '.', ' ') }} €</p>
+@endif
+                                            <p class="mb-0">{{ $product->availability }}</p>
                                     </div>
                                 </div>
                             </div>
