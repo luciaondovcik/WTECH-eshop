@@ -33,12 +33,13 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                                        <img class="img-fluid w-100" src="images/gitara1.jpg" alt="Sample">
-                                        {{--                                            <a href="/{{ $item->options->categories->slug }}/{{$item->slug}}"><img src="{{ asset('images/'.$item->categories->slug.'/'.$item->id.'-1.jpg') }}" alt={{$item->slug}} class="img-fluid w-100"></a>--}}
+                                        <figure class="block-4-image">
+                                            <a href="/{{ $item->options->cslug }}/{{$item->options->pslug}}"><img src="{{ asset('images/'.$item->options->cslug.'/'.$item->id.'-1.jpg') }}" alt={{$item->options->cslug}} class="img-fluid"></a>
+                                        </figure>                                        {{--                                            <a href="/{{ $item->options->categories->slug }}/{{$item->slug}}"><img src="{{ asset('images/'.$item->categories->slug.'/'.$item->id.'-1.jpg') }}" alt={{$item->slug}} class="img-fluid w-100"></a>--}}
                                     </div>
                                 </div>
                                 <div class="col-md-5 d-flex flex-column my-3 my-md-0">
-                                    <h5 class="mb-auto cart-item">{{ $item->name }}
+                                    <h5 class="mb-auto cart-item">{{ $item->name}}
                                     <div class="def-number-input number-input safari_only mb-0 w-100 row d-flex align-items-baseline">
                                         <div class="col-md-4 mt-2 mt-md-0">
                                             <p>Počet:</p>
@@ -46,13 +47,23 @@
                                         <div class="col-md-8">
                                             <div class="input-group mb-0" style="max-width: 120px;">
                                                 <div class="input-group-prepend">
-                                                        <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                                    <form class="my-auto" action="{{route('cart.decreaseqty',$item->rowId)}}" method="POST">
+                                                        {{csrf_field()}}
+                                                        {{ method_field('POST') }}
+                                                    <button type="submit" class="btn btn-outline-primary quantity" >&minus;</button>
+                                                    </form>
                                                 </div>
-                                                <input type="text" class="form-control text-center" value="{{$item->qty}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                                <input type="text" class="form-control text-center border-0" value="{{$item->qty}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                                    <form class="my-auto" action="{{route('cart.increaseqty',$item->rowId)}}" method="POST">
+                                                        {{csrf_field()}}
+                                                        {{ method_field('GET') }}
+                                                    <button class="btn btn-outline-primary quantity" type="submit">&plus;</button>
+                                                    </form>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -72,6 +83,8 @@
                                     </form>
                                     <p class="mb-0 ml-auto mr-0 lead"><strong>{{ number_format((float)$item->price * $item->qty, 2, '.', ' ') }} €</strong></p>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -93,19 +106,19 @@
                                     Produkty:
                                     <span>{{Cart::total()}} €</span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Doprava:
-                                    <span>Vyberte</span>
-                                </li>
+{{--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">--}}
+{{--                                    Doprava:--}}
+{{--                                    <span>Vyberte</span>--}}
+{{--                                </li>--}}
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                    Zľava:
-                                    <span>56ssss2.57 €</span>
+                                    Zľavový kupón:
+                                    <span>0 €</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-top px-0 mb-3">
                                     <div>
                                         <strong>Spolu:</strong>
                                     </div>
-                                    <span><strong>506sss3.12 €</strong></span>
+                                    <span><strong>{{Cart::total()}} €</strong></span>
                                 </li>
                             </ul>
 
@@ -131,15 +144,28 @@
 
 @section('extra-js')
     <script src="{{asset('js/app.js')}}"></script>
-<script>
-    (function (){
-        const classname = document.querySelectorAll('.form-control text-center')
-
-        Array.from(classname).forEach(function(element)) {
-            element.addEventListener('change',function (){
-                alert('changed');
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        (function(){
+            const classname = document.querySelectorAll('.quantity')
+            Array.from(classname).forEach(function(element) {
+                element.addEventListener('change', function() {
+                    const id = element.getAttribute('data-id')
+                    const productQuantity = element.getAttribute('data-productQuantity')
+                    axios.patch(`/cart/${id}`, {
+                        quantity: this.value,
+                        productQuantity: productQuantity
+                    })
+                        .then(function (response) {
+                            // console.log(response);
+                            window.location.href = '{{ route('cart.index') }}'
+                        })
+                        .catch(function (error) {
+                            // console.log(error);
+                            window.location.href = '{{ route('cart.index') }}'
+                        });
+                })
             })
-        }
-    })();
-</script>
+        })();
+    </script>
 @endsection

@@ -31,32 +31,32 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="c_fname" class="text-black">Meno <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_fname" name="c_fname">
+                                <input type="text" class="form-control" id="c_fname" name="c_fname" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="c_lname" class="text-black">Priezvisko <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_lname" name="c_lname">
+                                <input type="text" class="form-control" id="c_lname" name="c_lname" required>
                             </div>
                         </div>
                         <div class="form-group row mb-5">
                             <div class="col-md-6">
                                 <label for="c_email_address" class="text-black">E-mail <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                                <input type="text" class="form-control" id="c_email_address" name="c_email_address" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="c_phone" class="text-black">Tel. číslo <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_phone" name="c_phone">
+                                <input type="text" class="form-control" id="c_phone" name="c_phone" required>
                             </div>
                         </div>
                         <h2 class="h3 mb-3 text-black">ADRESA DORUČENIA</h2>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="c_address" class="text-black">Ulica a číslo domu <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_address" name="c_address">
+                                <input type="text" class="form-control" id="c_address" name="c_address" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="c_postal_zip" class="text-black">PSČ <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="c_state_country" class="text-black">Krajina <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_state_country" name="c_state_country">
+                                <input type="text" class="form-control" id="c_state_country" name="c_state_country" required>
                             </div>
                         </div>
 
@@ -161,19 +161,19 @@
                                     Produkty:
                                     <span>{{Cart::total()}} €</span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Doprava:
-                                    <span>Vyberte</span>
-                                </li>
+{{--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">--}}
+{{--                                    Doprava:--}}
+{{--                                    <span>Vyberte</span>--}}
+{{--                                </li>--}}
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                    Zľava:
-                                    <span>56ssss2.57 €</span>
+                                    Zľavový kupón:
+                                    <span>0 €</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-top px-0 mb-3">
                                     <div>
                                         <strong>Spolu:</strong>
                                     </div>
-                                    <span><strong>506sss3.12 €</strong></span>
+                                    <span><strong>{{Cart::total()}} €</strong></span>
                                 </li>
                             </ul>
 {{--                            <a href="{{route('payment.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Pokračuj</strong></a>--}}

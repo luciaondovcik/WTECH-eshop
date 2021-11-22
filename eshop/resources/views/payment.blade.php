@@ -67,13 +67,13 @@
                                     Produkty:
                                     <span>{{Cart::total()}} €</span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Doprava:
-                                    <span>Kuriér DPD</span>
-                                </li>
+{{--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">--}}
+{{--                                    Doprava:--}}
+{{--                                    <span>Kuriér DPD</span>--}}
+{{--                                </li>--}}
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                    Zľava:
-                                    <span>562ssss.57€</span>
+                                    Zľavový kupón:
+                                    <span>0 €</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-top px-0 mb-3">
                                     <div>

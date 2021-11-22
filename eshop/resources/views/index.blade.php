@@ -44,12 +44,17 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
-                                            </div>
+                                                @if($products[$i]->discount > 0)
+                                                    <span class="text-danger mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price * (100-($products[$i]->discount))/100, 2, '.', ' ') }} €</span>
+                                                    <span class="text-primary mb-0 font-weight-bold" ><s>{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</s></span>
+
+                                                @else
+                                                    <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
+                                                @endif                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -61,12 +66,17 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
-                                            </div>
+                                                @if($products[$i]->discount > 0)
+                                                    <span class="text-danger mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price * (100-($products[$i]->discount))/100, 2, '.', ' ') }} €</span>
+                                                    <span class="text-primary mb-0 font-weight-bold" ><s>{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</s></span>
+
+                                                @else
+                                                    <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
+                                                @endif                                             </div>
                                         </div>
                                     </div>
                                 </div>
@@ -85,12 +95,17 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
-                                            </div>
+                                                @if($products[$i]->discount > 0)
+                                                    <span class="text-danger mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price * (100-($products[$i]->discount))/100, 2, '.', ' ') }} €</span>
+                                                    <span class="text-primary mb-0 font-weight-bold" ><s>{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</s></span>
+
+                                                @else
+                                                    <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
+                                                @endif                                             </div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,12 +117,17 @@
                                     <div class="item">
                                         <div class="block-4 text-center">
                                             <figure class="block-4-image">
-                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="images/kategorie/kat1.jpg" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                                <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                             </figure>
                                             <div class="block-4-text p-4">
                                                 <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
-                                                <p class="text-primary font-weight-bold">{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
-                                            </div>
+                                                @if($products[$i]->discount > 0)
+                                                    <span class="text-danger mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price * (100-($products[$i]->discount))/100, 2, '.', ' ') }} €</span>
+                                                    <span class="text-primary mb-0 font-weight-bold" ><s>{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</s></span>
+
+                                                @else
+                                                    <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$products[$i]->price, 2, '.', ' ') }} €</p>
+                                                @endif                                             </div>
                                         </div>
                                     </div>
                                 </div>

@@ -101,6 +101,10 @@
 
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="pslug" value="{{ $product->slug }}">
+
+                                <input type="hidden" name="cslug" value="{{ $product->categories->slug }}">
+
                             <input type="hidden" name="price" value="{{ $product->price * (100-($product->discount))/100}}">
                                 <button type="submit" class="buy-now btn btn-sm btn-primary">Kúpiť</button>
 

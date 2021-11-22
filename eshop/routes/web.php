@@ -29,6 +29,9 @@ Route::get('/cart','App\Http\Controllers\CartController@index')->name('cart.inde
 Route::post('/cart','App\Http\Controllers\CartController@store')->name('cart.store');
 Route::delete('/cart/{product}','App\Http\Controllers\CartController@destroy')->name('cart.destroy');
 
+Route::post('/cart/{product}','App\Http\Controllers\CartController@decreaseqty')->name('cart.decreaseqty');
+Route::get('/cart/{product}','App\Http\Controllers\CartController@increaseqty')->name('cart.increaseqty');
+
 Route::get('/payment','App\Http\Controllers\PaymentController@index')->name('payment.index');
 Route::get('/thankyou','App\Http\Controllers\ThankyouController@index')->name('thankyou.index');
 

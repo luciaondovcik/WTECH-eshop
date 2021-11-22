@@ -65,7 +65,7 @@
 
                                         @else
                                             <p class="text-primary mb-0 font-weight-bold" >{{ number_format((float)$product->price, 2, '.', ' ') }} €</p>
-@endif
+                                        @endif
                                             <p class="mb-0">{{ $product->availability }}</p>
                                     </div>
                                 </div>

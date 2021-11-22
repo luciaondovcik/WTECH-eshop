@@ -40,7 +40,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::add($request->id,$request->name,$request->qty,$request->price)->associate('app\models\Product');
+//        dd($request);
+        Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug])->associate('app\models\Product');
 
         return redirect()->route('cart.index');
     }
@@ -88,6 +89,22 @@ class CartController extends Controller
     public function destroy($id)
     {
         Cart::remove($id);
+        return back();
+    }
+
+    public function increaseqty($id)
+    {
+        $item = Cart::get($id);
+
+        Cart::update($id, $item->qty+1);
+        return back();
+    }
+
+    public function decreaseqty($id)
+    {
+        $item = Cart::get($id);
+
+        Cart::update($id, $item->qty-1);
         return back();
     }
 
