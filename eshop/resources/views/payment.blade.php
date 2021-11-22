@@ -4,7 +4,7 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.html">Domov</a> <span class="mx-2 mb-0">/</span> <a href="cart.html">Košík</a> <span class="mx-2 mb-0">/</span> <a href="checkout.html">Dodacie údaje</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Doprava a platba</strong></div>
+                <div class="col-md-12 mb-0"><a href="/">Domov</a> <span class="mx-2 mb-0">/</span> <a href="/cart">Košík</a> <span class="mx-2 mb-0">/</span> <a href="/checkout">Dodacie údaje</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Doprava a platba</strong></div>
             </div>
         </div>
     </div>

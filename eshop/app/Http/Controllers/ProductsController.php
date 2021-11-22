@@ -9,13 +9,6 @@ use App\Models\Brand;
 
 class ProductsController extends Controller
 {
-//    function list(Request $request){  # <----------- don't pass the params, just the request object
-//
-//        $product = $request->route('product');   # <--- Then access by name
-//        $category = $request->route('category');
-//
-//        dd("Page: $product | Category: $category");
-//    }
 
     /**
      * Display a listing of the resource.

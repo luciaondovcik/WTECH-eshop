@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function Sodium\add;
 
 class CartController extends Controller
@@ -18,8 +19,16 @@ class CartController extends Controller
     public function index()
     {;
         $categories = Category::all();
-
-        return view('cart',compact('categories'));
+        if (Auth::check()){
+            $userCart = Session::get('cart'.Auth::id())->getContent();
+            $totalPrice = 0;
+            foreach($userCart as $item) {
+                $totalPrice += ($item->price *$item->qty);
+            }
+            return view('cart',compact('categories', 'userCart', 'totalPrice'));
+        }
+        $totalPrice = Cart::total();
+        return view('cart',compact('categories', 'totalPrice'));
     }
 
     /**
@@ -40,10 +49,39 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
-        Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug])->associate('app\models\Product');
-
-        return redirect()->route('cart.index');
+//<<<<<<< HEAD
+////        dd($request);
+//        Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug])->associate('app\models\Product');
+//=======
+        $cart = session()->get('cart');
+        if(!$cart) {
+            $cart = [
+                $request->id => [
+                    "name" => $request->name,
+                    "quantity" => $request->qty,
+                    "price" => $request->price,
+                ]
+            ];
+            session()->put('cart', $cart);
+            Cart::add($request->id,$request->name,$request->qty,$request->price)->associate('app\models\Product');
+            return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+        }
+        // if cart not empty then check if this product exist then increment quantity
+        if(isset($cart[$request->id])) {
+            $cart[$request->id]['quantity'] = $request->qty;
+            session()->put('cart', $cart);
+            Cart::add($request->id,$request->name,$request->qty,$request->price)->associate('app\models\Product');
+            return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+        }
+        // if item not exist in cart then add to cart
+        $cart[$request->id] = [
+            "name" => $request->name,
+            "quantity" => $request->qty,
+            "price" => $request->price,
+        ];
+        session()->put('cart', $cart);
+        Cart::add($request->id,$request->name,$request->qty,$request->price)->associate('app\models\Product');
+        return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
     }
 
     /**
