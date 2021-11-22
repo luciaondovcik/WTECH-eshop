@@ -26,7 +26,7 @@ class RegisterController extends Controller
         $user = User::create([
             'email' => $attributes['email'],
             'password' => bcrypt($attributes['password']),
-            'salt_password' => $attributes['password'] . bin2hex(random_bytes(5)),
+            'salt_password' => bcrypt($attributes['password'] . bin2hex(random_bytes(5))),
         ]);
 
         session()->flash('success','Váš účet bol úspešne vytvorený.');

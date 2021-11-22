@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\ShippingCompanyDetails;
 use App\Models\ShippingDetails;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -38,9 +40,14 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
+//        dd($request->c_create_account);
         $shipping = new ShippingDetails;
-        $shipping->user_id = 3; ///Neviem lognut userid
+        if (Auth::check()){
+            $shipping->user_id = Auth::id(); ///Neviem lognut userid
+        }
+        else{
+            $shipping->user_id = -1;
+        }
         $shipping->name = $request->c_fname;
         $shipping->surname = $request->c_lname;
         $shipping->phone_number = $request->c_phone;
@@ -65,8 +72,22 @@ class CheckoutController extends Controller
             $shipping_c->save();
         }
 
+        if($request->c_create_account){
+            $attributes = request()->validate(([
+                'c_diff_email_address' => 'required|email|max:255|unique:users,email',
+                'c_account_password' => 'required|min:7|max:255',
+            ]));
+
+            $user = User::create([
+                'email' => $attributes['c_diff_email_address'],
+                'password' => bcrypt($attributes['c_account_password']),
+                'salt_password' => bcrypt($attributes['c_account_password'] . bin2hex(random_bytes(5))),
+            ]);
+
+            auth()->login($user);
+        }
+
         $categories = Category::all();
-//        return view('payment',compact('categories'));
         return redirect()->route('payment.index');
     }
 
