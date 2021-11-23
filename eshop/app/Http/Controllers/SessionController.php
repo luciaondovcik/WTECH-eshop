@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Nette\Schema\ValidationException;
 
 class SessionController extends Controller
@@ -10,7 +12,7 @@ class SessionController extends Controller
     public function destroy()
     {
         auth()->logout();
-
+        Cart::destroy();
         return redirect('/')->with('success', 'Dovidenia!');
     }
 
@@ -23,6 +25,13 @@ class SessionController extends Controller
 
         if(auth()->attempt($attributes)){
             session()->regenerate();
+            Cart::destroy();
+            if (\Session::get('cart'.Auth::id())){
+                $userCart =\Session::get('cart'.Auth::id());
+                foreach($userCart as $item) {
+                    Cart::add($item['id'],$item['name'],$item['quantity'],$item['price'],['pslug'=>$item['pslug'],'cslug'=>$item['cslug']])->associate('app\models\Product');
+                }
+            }
             return redirect('/')->with('success', 'Vitajte!');
         }
 

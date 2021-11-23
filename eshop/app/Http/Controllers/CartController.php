@@ -17,18 +17,19 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {;
+    {
         $categories = Category::all();
-        if (Auth::check()){
-            $userCart = Session::get('cart'.Auth::id())->getContent();
-            $totalPrice = 0;
+        if (Auth::check() && \Session::get('cart'.Auth::id())){
+//            dd(\Session::get('cart'.Auth::id()));
+            Cart::destroy();
+            $userCart =\Session::get('cart'.Auth::id());
             foreach($userCart as $item) {
-                $totalPrice += ($item->price *$item->qty);
+                Cart::add($item['id'],$item['name'],$item['quantity'],$item['price'],['pslug'=>$item['pslug'],'cslug'=>$item['cslug']])->associate('app\models\Product');
             }
-            return view('cart',compact('categories', 'userCart', 'totalPrice'));
+            return view('cart',compact('categories', 'userCart'));
         }
-        $totalPrice = Cart::total();
-        return view('cart',compact('categories', 'totalPrice'));
+
+        return view('cart',compact('categories'));
     }
 
     /**
@@ -49,38 +50,42 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-//<<<<<<< HEAD
-////        dd($request);
-//        Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug])->associate('app\models\Product');
-//=======
-        $cart = session()->get('cart');
-        if(!$cart) {
-            $cart = [
-                $request->id => [
-                    "name" => $request->name,
-                    "quantity" => $request->qty,
-                    "price" => $request->price,
-                ]
+        if (Auth::check()) {
+            $cart = $request->session()->get('cart'.Auth::id());
+            if (!$cart) {
+                $cart = [
+                    $request->id => [
+                        "id" => $request->id,
+                        "name" => $request->name,
+                        "quantity" => $request->qty,
+                        "price" => $request->price,
+                        'pslug' => $request->pslug,
+                        'cslug' => $request->cslug
+                    ]
+                ];
+                $request->session()->put('cart'.Auth::id(), $cart);
+                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug])->associate('app\models\Product');
+                return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+            }
+            // if cart not empty then check if this product exist then increment quantity
+            if (isset($cart[$request->id])) {
+                $cart[$request->id]['quantity'] += $request->qty;
+                $request->session()->put('cart'.Auth::id(), $cart);
+                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug])->associate('app\models\Product');
+                return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+            }
+            // if item not exist in cart then add to cart
+            $cart[$request->id] = [
+                "id" => $request->id,
+                "name" => $request->name,
+                "quantity" => $request->qty,
+                "price" => $request->price,
+                'pslug' => $request->pslug,
+                'cslug' => $request->cslug
             ];
-            session()->put('cart', $cart);
-            Cart::add($request->id,$request->name,$request->qty,$request->price)->associate('app\models\Product');
-            return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+            $request->session()->put('cart'.Auth::id(), $cart);
         }
-        // if cart not empty then check if this product exist then increment quantity
-        if(isset($cart[$request->id])) {
-            $cart[$request->id]['quantity'] = $request->qty;
-            session()->put('cart', $cart);
-            Cart::add($request->id,$request->name,$request->qty,$request->price)->associate('app\models\Product');
-            return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
-        }
-        // if item not exist in cart then add to cart
-        $cart[$request->id] = [
-            "name" => $request->name,
-            "quantity" => $request->qty,
-            "price" => $request->price,
-        ];
-        session()->put('cart', $cart);
-        Cart::add($request->id,$request->name,$request->qty,$request->price)->associate('app\models\Product');
+        Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug])->associate('app\models\Product');
         return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
     }
 
@@ -126,22 +131,55 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::check()) {
+            $cart = \Session::get('cart' . Auth::id());
+            \Session::forget('cart' . Auth::id());
+            foreach($cart as $key=>$item) {
+                if($item['id'] == Cart::get($id)->id){
+                    unset($cart[$key]);
+                    break;
+                }
+            }
+            session()->put('cart'.Auth::id(), $cart);
+        }
         Cart::remove($id);
         return back();
     }
 
     public function increaseqty($id)
     {
+        if (Auth::check()) {
+            $cart = \Session::get('cart' . Auth::id());
+            \Session::forget('cart' . Auth::id());
+            foreach($cart as $key=>$item) {
+                if($item['id'] == Cart::get($id)->id){
+                    $cart[$key]['quantity']++;
+                    break;
+                }
+            }
+//            dd($cart);
+            session()->put('cart'.Auth::id(), $cart);
+        }
         $item = Cart::get($id);
-
         Cart::update($id, $item->qty+1);
         return back();
     }
 
     public function decreaseqty($id)
     {
+        if (Auth::check()) {
+            $cart = \Session::get('cart' . Auth::id());
+            \Session::forget('cart' . Auth::id());
+            foreach($cart as $key=>$item) {
+                if($item['id'] == Cart::get($id)->id){
+                    $cart[$key]['quantity']--;
+                    break;
+                }
+            }
+//            dd($cart);
+            session()->put('cart'.Auth::id(), $cart);
+        }
         $item = Cart::get($id);
-
         Cart::update($id, $item->qty-1);
         return back();
     }
