@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
+use Illuminate\Http\Response;
 
 class ProductsController extends Controller
 {
@@ -80,7 +81,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('createproduct');
     }
 
     /**
@@ -91,7 +92,6 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -102,9 +102,6 @@ class ProductsController extends Controller
      */
     public function show($category, $productSlug)
     {
-        $categories = Category::all();
-        $product = Product::where('slug', $productSlug)->FirstOrFail();
-        return view('singleproduct',compact('product', 'categories'));
     }
 
     /**
@@ -140,4 +137,5 @@ class ProductsController extends Controller
     {
         //
     }
+
 }

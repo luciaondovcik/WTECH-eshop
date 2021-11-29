@@ -26,6 +26,11 @@ class SessionController extends Controller
         if(auth()->attempt($attributes)){
             session()->regenerate();
             Cart::destroy();
+
+            if(auth()->user()->email === 'lucia1234@gmail.com'){
+                return redirect('/admin')->with('success', 'Serus!');
+            }
+
             if (\Session::get('cart'.Auth::id())){
                 $userCart =\Session::get('cart'.Auth::id());
                 foreach($userCart as $item) {
