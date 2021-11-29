@@ -159,7 +159,7 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Produkty:
-                                    <span>{{Cart::total()}} €</span>
+                                    <span>{{ number_format((float)Cart::total(), 2, '.', ' ') }} €</span>
                                 </li>
 {{--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">--}}
 {{--                                    Doprava:--}}
@@ -173,7 +173,7 @@
                                     <div>
                                         <strong>Spolu:</strong>
                                     </div>
-                                    <span><strong>{{Cart::total()}} €</strong></span>
+                                    <span><strong>{{ number_format((float)Cart::total(), 2, '.', ' ') }} €</strong></span>
                                 </li>
                             </ul>
 {{--                            <a href="{{route('payment.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Pokračuj</strong></a>--}}

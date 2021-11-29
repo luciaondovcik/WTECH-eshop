@@ -8,7 +8,6 @@
             </div>
         </div>
     </div>
-
     <section class="site-section">
         <div class="container">
             <div class="row mb-3">
@@ -28,15 +27,16 @@
                         <h2 class="h3 mb-3 text-black">SPÔSOB DORUČENIA NA ADRESU</h2>
                         <form class="mb-5 text-black">
                             <div class="radio">
-                                <label><input type="radio" name="optradio" checked> Kuriér DPD <span class="ml-4 text-muted">+3.50€</span></label>
+                                <label><input type="radio" name="optradio1" class="radio1" value="1"> Kuriér DPD <span class="ml-4 text-muted">+3.50€</span></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio"> Kuriér Packeta <span class="ml-4 text-muted">+4.50€</span></label>
+                                <label><input type="radio" name="optradio1" class="radio1" value="2">  Kuriér Packeta <span class="ml-4 text-muted">+4.50€</span></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio"> Kuriér GLS <span class="ml-4 text-muted">+5.50€</span></label>
+                                <label><input type="radio" name="optradio1" class="radio1" value="3"> Kuriér GLS <span class="ml-4 text-muted">+5.50€</span></label>
                             </div>
                         </form>
+
                         <h2 class="h3 mb-3 text-black">SPÔSOB PLATBY</h2>
                         <form class="text-black">
                             <div class="radio">
@@ -52,8 +52,6 @@
                                 <label><input type="radio" name="optradio"> Viamo</label>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -61,16 +59,18 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h3 class="mb-3 text-center text-black">Zhrnutie objednávky</h3>
-                            <h6 class="mb-3 text-center">V košíku máš <strong class="text-black">4</strong> produkty.</h6>
+                            <h6 class="mb-3 text-center">Počet produktov v košíku: <strong class="text-black">{{Cart::count()}}</strong></h6>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Produkty:
-                                    <span>{{Cart::total()}} €</span>
+                                    <span>{{ number_format((float)Cart::total(), 2, '.', ' ') }} €</span>
                                 </li>
-{{--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">--}}
-{{--                                    Doprava:--}}
-{{--                                    <span>Kuriér DPD</span>--}}
-{{--                                </li>--}}
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Doprava:
+                                    <span id="selected"></span>
+                                </li>
+
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
                                     Zľavový kupón:
                                     <span>0 €</span>
@@ -79,7 +79,7 @@
                                     <div>
                                         <strong>Spolu:</strong>
                                     </div>
-                                    <span><strong>{{Cart::total()}} € + doprava</strong></span>
+                                    <span id="selected2"></span>
                                 </li>
                             </ul>
                             <a href="{{route('thankyou.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Dokonči</strong></a>                            <button type="button" class="btn btn-block" onclick="window.location.href='checkout';">Krok späť</button>
@@ -98,4 +98,30 @@
             </div>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('input[type=radio][name=optradio1]').change(function() {
+
+                var selectedValue = this.value;
+
+                if (selectedValue == 1) {
+                    $("#selected").text("3.50 €");
+                    $("#selected2").text("{{number_format((float)Cart::total() + floatval("3.5"), 2, '.', ' ')}} €");
+
+                } else if (selectedValue == 2) {
+                    $("#selected").text("4.50 €");
+                    $("#selected2").text("{{number_format((float)Cart::total() + floatval("4.5"), 2, '.', ' ')}} €");
+
+                } else if (selectedValue == 3) {
+                    $("#selected").text("5.50 €");
+                    $("#selected2").text("{{number_format((float)Cart::total() + floatval("5.5"), 2, '.', ' ')}} €");
+
+                }
+            });
+
+        });
+
+    </script>
 @endsection
