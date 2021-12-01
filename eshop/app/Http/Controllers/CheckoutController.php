@@ -72,22 +72,22 @@ class CheckoutController extends Controller
             $shipping_c->save();
         }
 
-        if($request->c_create_account){
-            $attributes = request()->validate(([
-                'c_diff_email_address' => 'required|email|max:255|unique:users,email',
-                'c_account_password' => 'required|min:7|max:255',
-            ]));
+//        if($request->c_create_account){
+//            $attributes = request()->validate(([
+//                'c_diff_email_address' => 'required|email|max:255|unique:users,email',
+//                'c_account_password' => 'required|min:7|max:255',
+//            ]));
+//
+//            $user = User::create([
+//                'email' => $attributes['c_diff_email_address'],
+//                'password' => bcrypt($attributes['c_account_password']),
+//                'salt_password' => bcrypt($attributes['c_account_password'] . bin2hex(random_bytes(5))),
+//            ]);
+//
+//            auth()->login($user);
+//        }
 
-            $user = User::create([
-                'email' => $attributes['c_diff_email_address'],
-                'password' => bcrypt($attributes['c_account_password']),
-                'salt_password' => bcrypt($attributes['c_account_password'] . bin2hex(random_bytes(5))),
-            ]);
 
-            auth()->login($user);
-        }
-
-        $categories = Category::all();
         return redirect()->route('payment.index');
     }
 

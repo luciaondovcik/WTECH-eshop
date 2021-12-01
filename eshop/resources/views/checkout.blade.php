@@ -70,18 +70,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account" role="button" aria-expanded="false" aria-controls="create_an_account"><input type="checkbox" value="1" id="c_create_account" name="c_create_account"> Vytvoriť účet?</label>
-                            <div class="collapse" id="create_an_account">
-                                <div class="py-2">
-                                    <p class="mb-3">Vytvorte si účet vypísaním informácií nižšie. E-mail zoberieme automaticky z objednávky. Ak už účet máte, prosím prihláste sa pomocou tlačítka na hornej časti stránky.</p>
-                                    <div class="form-group">
-                                        <label for="c_account_password" class="text-black">Heslo</label>
-                                        <input type="password" class="form-control" id="c_account_password" name="c_account_password" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account" role="button" aria-expanded="false" aria-controls="create_an_account"><input type="checkbox" value="1" id="c_create_account" name="c_create_account"> Vytvoriť účet?</label>--}}
+{{--                            <div class="collapse" id="create_an_account">--}}
+{{--                                <div class="py-2">--}}
+{{--                                    <p class="mb-3">Vytvorte si účet vypísaním informácií nižšie. E-mail zoberieme automaticky z objednávky. Ak už účet máte, prosím prihláste sa pomocou tlačítka na hornej časti stránky.</p>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="c_account_password" class="text-black">Heslo</label>--}}
+{{--                                        <input type="password" class="form-control" id="c_account_password" name="c_account_password" placeholder="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
                         <div class="form-group">
@@ -165,10 +165,10 @@
 {{--                                    Doprava:--}}
 {{--                                    <span>Vyberte</span>--}}
 {{--                                </li>--}}
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                    Zľavový kupón:
-                                    <span>0 €</span>
-                                </li>
+{{--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">--}}
+{{--                                    Zľavový kupón:--}}
+{{--                                    <span>0 €</span>--}}
+{{--                                </li>--}}
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-top px-0 mb-3">
                                     <div>
                                         <strong>Spolu:</strong>

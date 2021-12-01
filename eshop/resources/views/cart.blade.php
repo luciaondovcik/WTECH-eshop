@@ -110,10 +110,10 @@
 {{--                                    Doprava:--}}
 {{--                                    <span>Vyberte</span>--}}
 {{--                                </li>--}}
-                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                    Zľavový kupón:
-                                    <span>0 €</span>
-                                </li>
+{{--                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">--}}
+{{--                                    Zľavový kupón:--}}
+{{--                                    <span>0 €</span>--}}
+{{--                                </li>--}}
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 border-top px-0 mb-3">
                                     <div>
                                         <strong>Spolu:</strong>
@@ -126,10 +126,10 @@
                         </div>
                     </div>
                     <!-- Card -->
-                    <div class="mb-3 mb-md-0 border-bottom d-flex align-items-center">
-                        <input type="text" class="form-control py-3 border-0" id="coupon" placeholder="Zľavový kupón">
-                        <button type="button" class="btn border-0 pt-2"><span class="icon icon-check"></span></button>
-                    </div>
+{{--                    <div class="mb-3 mb-md-0 border-bottom d-flex align-items-center">--}}
+{{--                        <input type="text" class="form-control py-3 border-0" id="coupon" placeholder="Zľavový kupón">--}}
+{{--                        <button type="button" class="btn border-0 pt-2"><span class="icon icon-check"></span></button>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="row">
