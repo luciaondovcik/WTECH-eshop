@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShoppingCartItem extends Model
 {
+    protected $guarded = [];
     use HasFactory;
+    public $timestamps = false;
 }

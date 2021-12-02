@@ -23,9 +23,11 @@
                             <p class="my-2 text-center text-black"><strong>Doprava a platba </strong></p>
                         </div>
                     </div>
+                    <form action="{{ route('payment.store') }}" method="POST">
+                        {{csrf_field()}}
                     <div class="p-3 p-lg-4 border">
                         <h2 class="h3 mb-3 text-black">SPÔSOB DORUČENIA NA ADRESU</h2>
-                        <form class="mb-5 text-black">
+{{--                        <form class="mb-5 text-black">--}}
                             <div class="radio">
                                 <label><input type="radio" name="optradio1" class="radio1" value="1"> Kuriér DPD <span class="ml-4 text-muted">+3.50€</span></label>
                             </div>
@@ -35,24 +37,26 @@
                             <div class="radio">
                                 <label><input type="radio" name="optradio1" class="radio1" value="3"> Kuriér GLS <span class="ml-4 text-muted">+5.50€</span></label>
                             </div>
-                        </form>
+{{--                        </form>--}}
 
                         <h2 class="h3 mb-3 text-black">SPÔSOB PLATBY</h2>
-                        <form class="text-black">
+{{--                        <form class="mb-5 text-black">--}}
                             <div class="radio">
-                                <label><input type="radio" name="optradio" checked> Karta</label>
+                                <label><input type="radio" name="optradio2" class="radio2" value="1" checked> Karta</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio"> Bankový prevod</label>
+                                <label><input type="radio" name="optradio2" class="radio2" value="2"> Bankový prevod</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio"> Paypal</label>
+                                <label><input type="radio" name="optradio2" class="radio2" value="3"> Paypal</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="optradio"> Viamo</label>
+                                <label><input type="radio" name="optradio2" class="radio2" value="4"> Viamo</label>
                             </div>
-                        </form>
+{{--                        </form>--}}
                     </div>
+                    <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Dokonči objednávku a zaplať</button>
+                    </form>
                 </div>
                 <div class="col-md-4">
                     <!-- Card -->
@@ -82,12 +86,14 @@
                                     <span id="selected2"></span>
                                 </li>
                             </ul>
-                            <a href="{{route('thankyou.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Dokonči</strong></a>                            <button type="button" class="btn btn-block" onclick="window.location.href='checkout';">Krok späť</button>
+{{--                            <a href="{{route('thankyou.index')}}"  class="btn btn-primary btn-block waves-effect waves-light"><strong>Dokonči</strong></a>                            --}}
+                            <button type="button" class="btn btn-block" onclick="window.location.href='checkout';">Krok späť</button>
                         </div>
                     </div>
                     <!-- Card -->
                 </div>
-                <!-- </form> -->
+
+
             </div>
             <div class="row">
                 <div class="col">

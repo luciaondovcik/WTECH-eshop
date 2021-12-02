@@ -44,6 +44,8 @@ Route::post('/cart/{product}','App\Http\Controllers\CartController@decreaseqty')
 Route::get('/cart/{product}','App\Http\Controllers\CartController@increaseqty')->name('cart.increaseqty');
 
 Route::get('/payment','App\Http\Controllers\PaymentController@index')->name('payment.index');
+Route::post('/payment','App\Http\Controllers\PaymentController@store')->name('payment.store');
+
 Route::get('/thankyou','App\Http\Controllers\ThankyouController@index')->name('thankyou.index');
 
 Route::get('/checkout','App\Http\Controllers\CheckoutController@index')->name('checkout.index');

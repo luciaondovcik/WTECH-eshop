@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShippingCompanyDetails extends Model
 {
+    protected $guarded = [];
     use HasFactory;
     public $timestamps = false;
 }

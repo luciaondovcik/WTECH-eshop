@@ -147,7 +147,7 @@
                         </div>
 
                     </div>
-                        <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Pokračuj</button>
+                    <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Pokračuj</button>
                     </form>
                 </div>
                 <div class="col-md-4">

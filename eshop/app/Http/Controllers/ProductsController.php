@@ -102,6 +102,9 @@ class ProductsController extends Controller
      */
     public function show($category, $productSlug)
     {
+        $categories = Category::all();
+        $product = Product::where('slug', $productSlug)->FirstOrFail();
+        return view('singleproduct',compact('product', 'categories'));
     }
 
     /**
