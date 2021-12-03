@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RegisterController;
@@ -28,6 +28,7 @@ Route::post('/admin/product/store', [AdminController::class, 'store'])->middlewa
 Route::post('/admin/product/update', 'App\Http\Controllers\AdminController@update')->name('product.update')->middleware('admin');
 Route::get('/admin/product/delete', 'App\Http\Controllers\AdminController@delete')->name('product.delete')->middleware('admin');
 Route::get('/admin/product/edit', 'App\Http\Controllers\AdminController@edit')->name('product.edit')->middleware('admin');
+Route::get('/admin/product/edit/deleteImg', 'App\Http\Controllers\AdminController@deleteImg')->name('product.deleteImg')->middleware('admin');
 
 
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');

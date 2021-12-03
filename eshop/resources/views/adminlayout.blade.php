@@ -80,6 +80,7 @@
 <script src="/js/jquery.magnific-popup.min.js"></script>
 <script src="/js/aos.js"></script>
 <script src="/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 </body>
 

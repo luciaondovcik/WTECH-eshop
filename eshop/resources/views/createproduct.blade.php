@@ -5,7 +5,7 @@
         <div class="container">
             <div class="bg-light p-5 my-sm-5">
                 <h2 class="mb-5">Pridaj produkt</h2>
-                <form action="/admin/product/store" method="POST">
+                <form action="/admin/product/store" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <div class="col-12">
@@ -96,9 +96,9 @@
                     </div>
                     <div class="form-group row mb-5">
                         <div class="col-12">
-                            <label for="productPictures[]" class="text-black">Vyber obrázky <span class="text-danger">*</span></label>
-                            <input type="file" class="form-control-file" id="productPictures[]" name="productPictures[]">
-                            @error('checkbox')
+                            <label for="images" class="text-black">Vyber obrázky (max 5)</label>
+                            <input type="file" class="form-control-file" id="images" name="productPictures[]" multiple>
+                            @error('productPictures')
                             <small class="text-danger text-xs mt-1">{{ $message }}</small>
                             @enderror
                         </div>
@@ -108,6 +108,5 @@
             </div>
         </div>
     </section>
-
 
 @endsection

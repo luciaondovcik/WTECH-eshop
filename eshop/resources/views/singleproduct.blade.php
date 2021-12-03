@@ -15,18 +15,11 @@
                 <div class="col-md-6">
                     <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
+                            @foreach($product->images as $key=>$image)
+                            <div class="carousel-item @php if($key == 0){echo "active";} @endphp ">
+                                <img src="{{ asset('images/products/'.$image) }}" class="d-block w-100">
                             </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                            </div>
+                            @endforeach
                         </div>
                         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -38,18 +31,11 @@
                         </a>
                     </div>
                     <ol class="carousel-indicators single-product-carousel mt-3">
+                        @foreach($product->images as $image)
                         <li data-target="#carouselIndicators" data-slide-to="0" class="active">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
+                            <img src="{{ asset('images/products/'.$image) }}" class="d-block w-100">
                         </li>
-                        <li data-target="#carouselIndicators" data-slide-to="1">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                        </li>
-                        <li data-target="#carouselIndicators" data-slide-to="2">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                        </li>
-                        <li data-target="#carouselIndicators" data-slide-to="3">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                        </li>
+                        @endforeach
                     </ol>
                 </div>
 
@@ -101,12 +87,11 @@
 
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <input type="hidden" name="name" value="{{ $product->name }}">
-                                <input type="hidden" name="pslug" value="{{ $product->slug }}">
-
-                                <input type="hidden" name="cslug" value="{{ $product->categories->slug }}">
-
+                            <input type="hidden" name="pslug" value="{{ $product->slug }}">
+                            <input type="hidden" name="cslug" value="{{ $product->categories->slug }}">
                             <input type="hidden" name="price" value="{{ $product->price * (100-($product->discount))/100}}">
-                                <button type="submit" class="buy-now btn btn-sm btn-primary">Kúpiť</button>
+                            <input type="hidden" name="image" value="{{ $product->images[0] }}">
+                            <button type="submit" class="buy-now btn btn-sm btn-primary">Kúpiť</button>
 
                             </div>
 

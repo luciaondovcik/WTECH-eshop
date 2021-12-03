@@ -43,7 +43,7 @@
                                 <div class="item mb-4 mb-md-0">
                                     <div class="block-4 text-center">
                                         <figure class="block-4-image">
-                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/products/'.head($products[$i]->images)) }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                         </figure>
                                         <div class="block-4-text p-4">
                                             <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
@@ -66,7 +66,7 @@
                                 <div class="item">
                                     <div class="block-4 text-center">
                                         <figure class="block-4-image">
-                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/products/'.head($products[$i]->images)) }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                         </figure>
                                         <div class="block-4-text p-4">
                                             <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
@@ -93,7 +93,7 @@
                                 <div class="item">
                                     <div class="block-4 text-center">
                                         <figure class="block-4-image">
-                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/products/'.head($products[$i]->images)) }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                         </figure>
                                         <div class="block-4-text p-4">
                                             <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
@@ -115,7 +115,7 @@
                                 <div class="item">
                                     <div class="block-4 text-center">
                                         <figure class="block-4-image">
-                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/'.$products[$i]->categories->slug.'/'.$products[$i]->id.'-1.jpg') }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
+                                            <a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}"><img src="{{ asset('images/products/'.head($products[$i]->images)) }}" alt="{{$products[$i]->slug}}" class="img-fluid"></a>
                                         </figure>
                                         <div class="block-4-text p-4">
                                             <h3><a href="/{{ $products[$i]->categories->slug }}/{{$products[$i]->slug}}">{{ $products[$i]->name }}</a></h3>
