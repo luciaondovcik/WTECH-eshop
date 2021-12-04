@@ -165,7 +165,7 @@
                                                 <span class="icon icon-star"></span>
                                                 <span class="icon icon-star"></span>
                                                 <span class="icon icon-star"></span>
-                                                (66%)
+                                                (100%)
                                             </span>
                                             <span>6 Recenzií</span>
                                         </p>
@@ -176,9 +176,9 @@
                                                 <span class="icon icon-star"></span>
                                                 <span class="icon icon-star"></span>
                                                 <span class="icon icon-star_border"></span>
-                                                (11%)
+                                                (0%)
                                             </span>
-                                            <span>1 Recenzia</span>
+                                            <span>0 Recenzií</span>
                                         </p>
                                         <p class="star">
                                             <span>
@@ -187,9 +187,9 @@
                                                 <span class="icon icon-star"></span>
                                                 <span class="icon icon-star_border"></span>
                                                 <span class="icon icon-star_border"></span>
-                                                (22%)
+                                                (0%)
                                             </span>
-                                            <span>2 Recenzie</span>
+                                            <span>0 Recenzií</span>
                                         </p>
                                         <p class="star">
                                             <span>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\TempCart;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use function Sodium\add;
 
 class CartController extends Controller
@@ -19,14 +21,15 @@ class CartController extends Controller
     public function index()
     {
         $categories = Category::all();
-        if (Auth::check() && \Session::get('cart'.Auth::id())){
-//            dd(\Session::get('cart'.Auth::id()));
+        $last = DB::table('temp_carts')->where('user_id', '=', Auth::id())->get()->last();
+        if($last){
             Cart::destroy();
-            $userCart =\Session::get('cart'.Auth::id());
-            foreach($userCart as $item) {
-                Cart::add($item['id'],$item['name'],$item['quantity'],$item['price'],['pslug'=>$item['pslug'],'cslug'=>$item['cslug'], 'image'=> $item['image']])->associate('app\models\Product');
+            $cart = unserialize($last->content);
+            foreach($cart as $item) {
+                Cart::add($item[0],$item[1],$item[2],$item[3],['pslug'=>$item[4],'cslug'=>$item[5],'image'=>$item[6]])->associate('app\models\Product');
             }
-            return view('cart',compact('categories', 'userCart'));
+        }else{
+            Cart::destroy();
         }
 
         return view('cart',compact('categories'));
@@ -50,45 +53,61 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::check()) {
-            $cart = $request->session()->get('cart'.Auth::id());
-            if (!$cart) {
-                $cart = [
-                    $request->id => [
-                        "id" => $request->id,
-                        "name" => $request->name,
-                        "quantity" => $request->qty,
-                        "price" => $request->price,
-                        'pslug' => $request->pslug,
-                        'cslug' => $request->cslug,
-                        'image' => $request->image
-                    ]
-                ];
-                $request->session()->put('cart'.Auth::id(), $cart);
-                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug, 'image'=> $request->image])->associate('app\models\Product');
-                return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
-            }
-            // if cart not empty then check if this product exist then increment quantity
-            if (isset($cart[$request->id])) {
-                $cart[$request->id]['quantity'] += $request->qty;
-                $request->session()->put('cart'.Auth::id(), $cart);
-                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug, 'image'=> $request->image])->associate('app\models\Product');
-                return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
-            }
-            // if item not exist in cart then add to cart
-            $cart[$request->id] = [
-                "id" => $request->id,
-                "name" => $request->name,
-                "quantity" => $request->qty,
-                "price" => $request->price,
-                'pslug' => $request->pslug,
-                'cslug' => $request->cslug,
-                'image' => $request->image
-            ];
-            $request->session()->put('cart'.Auth::id(), $cart);
-        }
+//        if (Auth::check()) {
+////            $last = DB::table('temp_carts')->where('user_id', '=', Auth::id())->get()->last();
+////            if($last){
+////                $cart = unserialize($last->content);
+////                foreach($cart as $item) {
+////                    Cart::add($item[0],$item[1],$item[2],$item[3],['pslug'=>$item[4],'cslug'=>$item[5],'image'=>$item[6]])->associate('app\models\Product');
+////                }
+////            }
+//
+//            if (Cart::count()<1) {
+//                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug, 'image'=> $request->image])->associate('app\models\Product');
+//                return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
+//            }
+//            // if cart not empty then check if this product exist then increment quantity
+//            if (isset($cart[$request->id])) {
+//                $cart[$request->id]['quantity'] += $request->qty;
+//                $request->session()->put('cart'.Auth::id(), $cart);
+//                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug, 'image'=> $request->image])->associate('app\models\Product');
+//                return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
+//            }
+//            // if item not exist in cart then add to cart
+//            $cart[$request->id] = [
+//                "id" => $request->id,
+//                "name" => $request->name,
+//                "quantity" => $request->qty,
+//                "price" => $request->price,
+//                'pslug' => $request->pslug,
+//                'cslug' => $request->cslug,
+//                'image' => $request->image
+//            ];
+//            $request->session()->put('cart'.Auth::id(), $cart);
+//        }
 
         Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug, 'image'=> $request->image])->associate('app\models\Product');
+        if (Auth::check()) {
+            if(Cart::count()>0){
+                $stack = array();
+                foreach(Cart::content() as $item){
+                    $inner = array($item->id,$item->name,$item->qty,$item->price,$item->options->pslug,$item->options->cslug,$item->options->image);
+                    array_push($stack,$inner );
+                }
+                $content = serialize($stack);
+
+                $tempcart = TempCart::where('user_id',Auth::id())->first();
+                if($tempcart){
+                    $tempcart->content = $content;
+                    $tempcart->save();
+                }else{
+                    TempCart::create([
+                        'user_id' => Auth::id(),
+                        'content' => $content
+                    ]);
+                }
+            }
+        }
         return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
     }
 
@@ -134,56 +153,87 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        if (Auth::check()) {
-            $cart = \Session::get('cart' . Auth::id());
-            \Session::forget('cart' . Auth::id());
-            foreach($cart as $key=>$item) {
-                if($item['id'] == Cart::get($id)->id){
-                    unset($cart[$key]);
-                    break;
-                }
-            }
-            session()->put('cart'.Auth::id(), $cart);
-        }
         Cart::remove($id);
+        if (Auth::check()) {
+            if(Cart::count()>0){
+                $stack = array();
+                foreach(Cart::content() as $item){
+                    $inner = array($item->id,$item->name,$item->qty,$item->price,$item->options->pslug,$item->options->cslug,$item->options->image);
+                    array_push($stack,$inner );
+                }
+                $content = serialize($stack);
+
+                $tempcart = TempCart::where('user_id',Auth::id())->first();
+                if($tempcart){
+                    $tempcart->content = $content;
+                    $tempcart->save();
+                }else{
+                    TempCart::create([
+                        'user_id' => Auth::id(),
+                        'content' => $content
+                    ]);
+                }
+            }else{
+                TempCart::where('user_id',Auth::id())->delete();
+            }
+        }
         return back();
     }
 
     public function increaseqty($id)
     {
-        if (Auth::check()) {
-            $cart = \Session::get('cart' . Auth::id());
-            \Session::forget('cart' . Auth::id());
-            foreach($cart as $key=>$item) {
-                if($item['id'] == Cart::get($id)->id){
-                    $cart[$key]['quantity']++;
-                    break;
-                }
-            }
-//            dd($cart);
-            session()->put('cart'.Auth::id(), $cart);
-        }
         $item = Cart::get($id);
         Cart::update($id, $item->qty+1);
+        if (Auth::check()) {
+            if(Cart::count()>0){
+                $stack = array();
+                foreach(Cart::content() as $item){
+                    $inner = array($item->id,$item->name,$item->qty,$item->price,$item->options->pslug,$item->options->cslug,$item->options->image);
+                    array_push($stack,$inner );
+                }
+                $content = serialize($stack);
+
+                $tempcart = TempCart::where('user_id',Auth::id())->first();
+                if($tempcart){
+                    $tempcart->content = $content;
+                    $tempcart->save();
+                }else{
+                    TempCart::create([
+                        'user_id' => Auth::id(),
+                        'content' => $content
+                    ]);
+                }
+            }
+        }
+
         return back();
     }
 
     public function decreaseqty($id)
     {
-        if (Auth::check()) {
-            $cart = \Session::get('cart' . Auth::id());
-            \Session::forget('cart' . Auth::id());
-            foreach($cart as $key=>$item) {
-                if($item['id'] == Cart::get($id)->id){
-                    $cart[$key]['quantity']--;
-                    break;
-                }
-            }
-//            dd($cart);
-            session()->put('cart'.Auth::id(), $cart);
-        }
         $item = Cart::get($id);
         Cart::update($id, $item->qty-1);
+        if (Auth::check()) {
+            if(Cart::count()>0){
+                $stack = array();
+                foreach(Cart::content() as $item){
+                    $inner = array($item->id,$item->name,$item->qty,$item->price,$item->options->pslug,$item->options->cslug,$item->options->image);
+                    array_push($stack,$inner );
+                }
+                $content = serialize($stack);
+
+                $tempcart = TempCart::where('user_id',Auth::id())->first();
+                if($tempcart){
+                    $tempcart->content = $content;
+                    $tempcart->save();
+                }else{
+                    TempCart::create([
+                        'user_id' => Auth::id(),
+                        'content' => $content
+                    ]);
+                }
+            }
+        }
         return back();
     }
 
