@@ -147,7 +147,7 @@ class AdminController extends Controller
         unset($images[$request->key]);
         $product->images = $images;
         $product->save();
-        File::delete(asset('images/products/'.$imgToDelete));
+        File::delete('images/products/'.$imgToDelete);
         return redirect()->route('product.edit', ['id'=>$request->id]);
     }
 }
