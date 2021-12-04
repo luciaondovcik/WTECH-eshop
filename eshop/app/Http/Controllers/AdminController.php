@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -54,7 +55,10 @@ class AdminController extends Controller
         foreach($request->file('productPictures') as $file) {
             $fileArray = pathinfo($file->getClientOriginalName());
             $name = md5($fileArray['filename']) . '.' . $fileArray['extension'];
-            $file->move(public_path().'/images/products/', $name);
+            $img = Image::make($file->path());
+            $img->resize(388, 259, function ($const) {
+                $const->aspectRatio();
+            })->save(public_path() . '/images/products/'. $name);
             $imgData[] = $name;
         }
 
@@ -78,7 +82,11 @@ class AdminController extends Controller
 
     public function delete(Request $request)
     {
-        Product::where('id', $request->id)->delete();
+        $product = Product::where('id', $request->id)->first();
+        foreach($product->images as $img){
+            File::delete('images/products/'.$img);
+        }
+        $product->delete();
         session()->flash('success','Produkt bol vymazaný!');
         return redirect('/admin');
     }
@@ -113,7 +121,10 @@ class AdminController extends Controller
             foreach ($request->file('productPictures') as $file) {
                 $fileArray = pathinfo($file->getClientOriginalName());
                 $name = md5($fileArray['filename']) . '.' . $fileArray['extension'];
-                $file->move(public_path() . '/images/products/', $name);
+                $img = Image::make($file->path());
+                $img->resize(388, 259, function ($const) {
+                    $const->aspectRatio();
+                })->save(public_path() . '/images/products/'. $name);
                 $imgData[] = $name;
             }
             $mergedImgs = array_merge($product->images, $imgData);
