@@ -24,7 +24,7 @@ class CartController extends Controller
             Cart::destroy();
             $userCart =\Session::get('cart'.Auth::id());
             foreach($userCart as $item) {
-                Cart::add($item['id'],$item['name'],$item['quantity'],$item['price'],['pslug'=>$item['pslug'],'cslug'=>$item['cslug']])->associate('app\models\Product');
+                Cart::add($item['id'],$item['name'],$item['quantity'],$item['price'],['pslug'=>$item['pslug'],'cslug'=>$item['cslug'], 'image'=> $item['image']])->associate('app\models\Product');
             }
             return view('cart',compact('categories', 'userCart'));
         }
@@ -60,19 +60,20 @@ class CartController extends Controller
                         "quantity" => $request->qty,
                         "price" => $request->price,
                         'pslug' => $request->pslug,
-                        'cslug' => $request->cslug
+                        'cslug' => $request->cslug,
+                        'image' => $request->image
                     ]
                 ];
                 $request->session()->put('cart'.Auth::id(), $cart);
-                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug])->associate('app\models\Product');
-                return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug, 'image'=> $request->image])->associate('app\models\Product');
+                return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
             }
             // if cart not empty then check if this product exist then increment quantity
             if (isset($cart[$request->id])) {
                 $cart[$request->id]['quantity'] += $request->qty;
                 $request->session()->put('cart'.Auth::id(), $cart);
-                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug])->associate('app\models\Product');
-                return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+                Cart::add($request->id, $request->name, $request->qty, $request->price, ['pslug' => $request->pslug, 'cslug' => $request->cslug, 'image'=> $request->image])->associate('app\models\Product');
+                return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
             }
             // if item not exist in cart then add to cart
             $cart[$request->id] = [
@@ -81,12 +82,14 @@ class CartController extends Controller
                 "quantity" => $request->qty,
                 "price" => $request->price,
                 'pslug' => $request->pslug,
-                'cslug' => $request->cslug
+                'cslug' => $request->cslug,
+                'image' => $request->image
             ];
             $request->session()->put('cart'.Auth::id(), $cart);
         }
-        Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug])->associate('app\models\Product');
-        return redirect()->route('cart.index')->with('success', 'Produkt úspešne vložený do košíka!');
+
+        Cart::add($request->id,$request->name,$request->qty,$request->price,['pslug'=>$request->pslug,'cslug'=>$request->cslug, 'image'=> $request->image])->associate('app\models\Product');
+        return redirect()->route('products.index', [$request->cslug])->with('success', 'Produkt úspešne vložený do košíka!');
     }
 
     /**

@@ -6,6 +6,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -37,6 +39,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+
         $attributes = $request->validate(([
             'name' => 'required|max:255|unique:products,name',
             'slug' => 'required|max:255|unique:products,slug',
@@ -46,7 +49,18 @@ class AdminController extends Controller
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
             'description' => 'required|max:65535',
+            'productPictures' => 'required|max:5',
         ]));
+
+        foreach($request->file('productPictures') as $file) {
+            $fileArray = pathinfo($file->getClientOriginalName());
+            $name = md5($fileArray['filename']) . '.' . $fileArray['extension'];
+            $img = Image::make($file->path());
+            $img->resize(388, 259, function ($const) {
+                $const->aspectRatio();
+            })->save(public_path() . '/images/products/'. $name);
+            $imgData[] = $name;
+        }
 
         Product::create([
             'brand_id' => $attributes['brand'],
@@ -58,6 +72,7 @@ class AdminController extends Controller
             'color' => $attributes['color'],
             'availability' => 'dostupné',
             'description' => $attributes['description'],
+            'images' => $imgData
         ]);
 
         session()->flash('success','Produkt bol pridaný!');
@@ -67,7 +82,11 @@ class AdminController extends Controller
 
     public function delete(Request $request)
     {
-        Product::where('id', $request->id)->delete();
+        $product = Product::where('id', $request->id)->first();
+        foreach($product->images as $img){
+            File::delete('images/products/'.$img);
+        }
+        $product->delete();
         session()->flash('success','Produkt bol vymazaný!');
         return redirect('/admin');
     }
@@ -91,10 +110,28 @@ class AdminController extends Controller
             'discount' => 'required|numeric',
             'availability' => 'required',
             'description' => 'required|max:65535',
+            'productPictures' => 'max:5',
         ]));
+
         $category = Category::where('id', $attributes['category'])->first();
         $brand = Brand::where('id', $attributes['brand'])->first();
         $product = Product::where('id', $request->id)->first();
+
+        if(count($attributes)>9) {  //lebo setko je required okrem obrazkov takze budu vzdy chybat obrazky
+            foreach ($request->file('productPictures') as $file) {
+                $fileArray = pathinfo($file->getClientOriginalName());
+                $name = md5($fileArray['filename']) . '.' . $fileArray['extension'];
+                $img = Image::make($file->path());
+                $img->resize(388, 259, function ($const) {
+                    $const->aspectRatio();
+                })->save(public_path() . '/images/products/'. $name);
+                $imgData[] = $name;
+            }
+            $mergedImgs = array_merge($product->images, $imgData);
+        }else{
+            $mergedImgs = $product->images;
+        }
+
         $product->name = $attributes['name'];
         $product->slug = $attributes['slug'];
         $product->category_id = $category->id;
@@ -104,11 +141,24 @@ class AdminController extends Controller
         $product->discount = $attributes['discount'];
         $product->availability = $attributes['availability'];
         $product->description = $attributes['description'];
+        $product->images = $mergedImgs;
 
         $product->save();
 
         session()->flash('success','Produkt bol upravený!');
 
         return redirect('/admin');
+    }
+
+    public function deleteImg(Request $request)
+    {
+        $product = Product::where('id', $request->id)->first();
+        $images = $product->images;
+        $imgToDelete = $images[$request->key];
+        unset($images[$request->key]);
+        $product->images = $images;
+        $product->save();
+        File::delete('images/products/'.$imgToDelete);
+        return redirect()->route('product.edit', ['id'=>$request->id]);
     }
 }

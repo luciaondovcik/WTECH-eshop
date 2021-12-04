@@ -52,10 +52,10 @@
                 <div class="col-md-9 order-2">
                     <div class="row mb-5">
                         @foreach($products as $product)
-                            <div class="col-6 col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                            <div class="col-12 col-sm-6 col-lg-4 mb-4">
                                 <div class="block-4 text-center border">
                                     <figure class="block-4-image">
-                                        <a href="/{{ $product->categories->slug }}/{{$product->slug}}"><img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" alt={{$product->slug}} class="img-fluid"></a>
+                                        <a href="/{{ $product->categories->slug }}/{{$product->slug}}"><img src="{{ asset('images/products/'.$product->images[0]) }}" alt={{$product->slug}} class="img-fluid"></a>
                                     </figure>
                                     <div class="block-4-text p-4">
                                         <h3><a href="/{{ $product->categories->slug }}/{{$product->slug}}">{{ $product->name }}</a></h3>

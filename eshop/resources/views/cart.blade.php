@@ -34,12 +34,12 @@
                                 <div class="col-md-3">
                                     <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                                         <figure class="block-4-image">
-                                            <a href="/{{ $item->options->cslug }}/{{$item->options->pslug}}"><img src="{{ asset('images/'.$item->options->cslug.'/'.$item->id.'-1.jpg') }}" alt={{$item->options->cslug}} class="img-fluid"></a>
+                                            <a href="/{{ $item->options->cslug }}/{{$item->options->pslug}}"><img src="{{ asset('images/products/'.$item->options->image) }}" alt={{$item->options->cslug}} class="img-fluid"></a>
                                         </figure>                                        {{--                                            <a href="/{{ $item->options->categories->slug }}/{{$item->slug}}"><img src="{{ asset('images/'.$item->categories->slug.'/'.$item->id.'-1.jpg') }}" alt={{$item->slug}} class="img-fluid w-100"></a>--}}
                                     </div>
                                 </div>
                                 <div class="col-md-5 d-flex flex-column my-3 my-md-0">
-                                    <h5 class="mb-auto cart-item">{{ $item->name}}
+                                    <h5 class="mb-auto cart-item">{{ $item->name}}</h5>
                                     <div class="def-number-input number-input safari_only mb-0 w-100 row d-flex align-items-baseline">
                                         <div class="col-md-4 mt-2 mt-md-0">
                                             <p>Počet:</p>
@@ -134,7 +134,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <a href="javascript:history.back(); history.back();" class="btn back-shop">Späť k nákupu</a>
+                    <a href="/" class="btn back-shop">Späť k nákupu</a>
 {{--                    <button type="button" class="btn back-shop" onclick="window.location.href='shop.html';">Späť k nákupu</button>--}}
                 </div>
             </div>

@@ -15,18 +15,11 @@
                 <div class="col-md-6">
                     <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
+                            @foreach($product->images as $key=>$image)
+                            <div class="carousel-item @php if($key == 0){echo "active";} @endphp ">
+                                <img src="{{ asset('images/products/'.$image) }}" class="d-block w-100">
                             </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                            </div>
+                            @endforeach
                         </div>
                         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -38,18 +31,11 @@
                         </a>
                     </div>
                     <ol class="carousel-indicators single-product-carousel mt-3">
+                        @foreach($product->images as $image)
                         <li data-target="#carouselIndicators" data-slide-to="0" class="active">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
+                            <img src="{{ asset('images/products/'.$image) }}" class="d-block w-100">
                         </li>
-                        <li data-target="#carouselIndicators" data-slide-to="1">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                        </li>
-                        <li data-target="#carouselIndicators" data-slide-to="2">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                        </li>
-                        <li data-target="#carouselIndicators" data-slide-to="3">
-                            <img src="{{ asset('images/'.$product->categories->slug.'/'.$product->id.'-1.jpg') }}" class="d-block w-100">
-                        </li>
+                        @endforeach
                     </ol>
                 </div>
 
@@ -101,12 +87,11 @@
 
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <input type="hidden" name="name" value="{{ $product->name }}">
-                                <input type="hidden" name="pslug" value="{{ $product->slug }}">
-
-                                <input type="hidden" name="cslug" value="{{ $product->categories->slug }}">
-
+                            <input type="hidden" name="pslug" value="{{ $product->slug }}">
+                            <input type="hidden" name="cslug" value="{{ $product->categories->slug }}">
                             <input type="hidden" name="price" value="{{ $product->price * (100-($product->discount))/100}}">
-                                <button type="submit" class="buy-now btn btn-sm btn-primary">Kúpiť</button>
+                            <input type="hidden" name="image" value="{{ $product->images[0] }}">
+                            <button type="submit" class="buy-now btn btn-sm btn-primary">Kúpiť</button>
 
                             </div>
 
@@ -140,180 +125,34 @@
                         <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
                             <div class="p-4">
                                 <h3 class="mb-4">Informácie o výrobcovi</h3>
-                                <p>Samotná gitara teda prešla svojským vývojom. Pôvod gitary je zaznamenaný v Prednej Ázii, kde prvý hudobný nástroj podobný gitare tzv. kinor bol pozorovaný u Sumerov. Gitara sa dá zhotoviť z hocičoho, otázka je, akú kvalitu dosiahneme. Gitary sa robia prevažne na báze dreva, ako to bolo odjakživa. Existujú však gitary na báze syntetických materiálov (uhlíkové vlákno so svojimi dobrými elastickými vlastnosťami – RainSong Graphite Guitars) alebo sa využíva kov – oceľ na stavbu tela gitary (rezofonické gitary, napríklad Dobro, Lap–steel). Bola skonštruovaná dokonca aj gitara s mramorovým telom.</p>
-                                <ul>
-                                    <li>13 pražcov</li>
-                                    <li>smrekové drevo s ebenovými doplnkami</li>
-                                    <li>struny z recyklovaných materiálov</li>
-                                </ul>
+                                <h5 class="mb-4">{{ $product->brands->name }}</h5>
+                                <p>{{ $product->brands->description }}</p>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
                             <div class="row p-4">
                                 <div class="col-md-7">
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                    @for ($i = 0; $i < 6; $i++)
+                                        <div class="review mb-4 pt-3 border-top">
+                                            <div class="desc">
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <p><strong class="text-primary h4">Adam Troj</strong></p>
+                                                    <p><strong class="text-primary h6">28. august 2018</strong></p>
+                                                </div>
+                                                <p class="star">
+                                                    <span>
+                                                        <span class="icon icon-star"></span>
+                                                        <span class="icon icon-star"></span>
+                                                        <span class="icon icon-star"></span>
+                                                        <span class="icon icon-star"></span>
+                                                        <span class="icon icon-star"></span>
+                                                    </span>
+                                                </p>
+                                                <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
                                             </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
                                         </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review mb-4 pt-3 border-top">
-                                        <div class="desc">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <p><strong class="text-primary h4">Adam Troj</strong></p>
-                                                <p><strong class="text-primary h6">28. august 2018</strong></p>
-                                            </div>
-                                            <p class="star">
-                                                <span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                </span>
-                                            </p>
-                                            <p>Vynikajúci súzvuk zo strún, ktoré ma prekvapili tým, že sú z recyklovaného plastu. Basové struny sú len klasicky obmotané jemným drôtom.</p>
-                                        </div>
-                                    </div>
+                                    @endfor
                                 </div>
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
@@ -321,55 +160,55 @@
                                         <h3 class="mb-4">Hodnotenia</h3>
                                         <p class="star">
                                             <span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
                                                 (66%)
                                             </span>
                                             <span>6 Recenzií</span>
                                         </p>
                                         <p class="star">
                                             <span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star_border"></span>
                                                 (11%)
                                             </span>
                                             <span>1 Recenzia</span>
                                         </p>
                                         <p class="star">
                                             <span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star_border"></span>
+                                                <span class="icon icon-star_border"></span>
                                                 (22%)
                                             </span>
                                             <span>2 Recenzie</span>
                                         </p>
                                         <p class="star">
                                             <span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star_border"></span>
+                                                <span class="icon icon-star_border"></span>
+                                                <span class="icon icon-star_border"></span>
                                                 (0%)
                                             </span>
                                             <span>0 Recenzií</span>
                                         </p>
                                         <p class="star">
-                                        <span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
+                                            <span>
+                                                <span class="icon icon-star"></span>
+                                                <span class="icon icon-star_border"></span>
+                                                <span class="icon icon-star_border"></span>
+                                                <span class="icon icon-star_border"></span>
+                                                <span class="icon icon-star_border"></span>
                                                 (0%)
                                             </span>
                                         <span>0 Recenzií</span>
