@@ -21,17 +21,18 @@ class CartController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $last = DB::table('temp_carts')->where('user_id', '=', Auth::id())->get()->last();
-        if($last){
-            Cart::destroy();
-            $cart = unserialize($last->content);
-            foreach($cart as $item) {
-                Cart::add($item[0],$item[1],$item[2],$item[3],['pslug'=>$item[4],'cslug'=>$item[5],'image'=>$item[6]])->associate('app\models\Product');
+        if (Auth::check()) {
+            $last = DB::table('temp_carts')->where('user_id', '=', Auth::id())->get()->last();
+            if ($last) {
+                Cart::destroy();
+                $cart = unserialize($last->content);
+                foreach ($cart as $item) {
+                    Cart::add($item[0], $item[1], $item[2], $item[3], ['pslug' => $item[4], 'cslug' => $item[5], 'image' => $item[6]])->associate('app\models\Product');
+                }
+            } else {
+                Cart::destroy();
             }
-        }else{
-            Cart::destroy();
         }
-
         return view('cart',compact('categories'));
     }
 
