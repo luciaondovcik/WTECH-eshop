@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\TempCart;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ThankyouController extends Controller
 {
@@ -16,7 +18,10 @@ class ThankyouController extends Controller
     public function index()
     {
         $categories = Category::all();
-        Cart::instance('default')->destroy();
+        Cart::instance()->destroy();
+        if (Auth::check()){
+            TempCart::where('user_id',Auth::id())->delete();
+        }
         return view('thankyou',compact('categories'));
     }
 

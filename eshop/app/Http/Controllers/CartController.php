@@ -232,6 +232,8 @@ class CartController extends Controller
                         'content' => $content
                     ]);
                 }
+            }else{
+                TempCart::where('user_id',Auth::id())->delete();
             }
         }
         return back();
