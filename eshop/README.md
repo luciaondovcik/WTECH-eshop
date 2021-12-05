@@ -12,7 +12,9 @@ Pre jednoduchšiu prácu s nákupným košíkom sme využili knižnicu <a href="
 Pre potreby projektu sme taktiež nainštalovali knižnicu <a href="http://image.intervention.io/">intervention/image</a>, ktorá nám umožňuje upraviť veľkosť obrázka. Používame ju v administrátorskom prostredí pri nahrávaní obrázkov.
 
 ### Implementačné prostredie
-K vypracovaniu zadania sme zvolili implementačné prostredie PHP - Laravel rámec. Pre prácu s databázami sme použili PostgreSQL relačný databázový systém. Pre jednoduchšiu spoluprácu sme použili databázu hostovanú na službe DigitalOcean.com.
+K vypracovaniu zadania sme zvolili implementačné prostredie PHP - Laravel rámec. Pre prácu s databázami sme použili PostgreSQL relačný databázový systém.
+
+Pre jednoduchšiu spoluprácu sme použili databázu hostovanú na službe DigitalOcean.com. Údaje do nej sme nahrali pomocou seedrov v Laraveli.
 
 ### Fyzický dátový model
  ![obr](diagram.png)
